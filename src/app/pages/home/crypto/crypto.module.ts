@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ContinentComponent } from './continent.component';
+import { CryptoComponent } from './crypto.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ContinentComponent,
+    component: CryptoComponent,
   },
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
-  declarations: [ContinentComponent],
+  declarations: [CryptoComponent],
 })
-export class ContinentModule {}
+export class CryptoModule {}

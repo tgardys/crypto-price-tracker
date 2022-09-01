@@ -8,17 +8,10 @@ const routes: Routes = [
       import('./pages/home/home.module').then((mod) => mod.HomeModule),
   },
   {
-    path: 'continent',
+    path: 'crypto',
     loadChildren: () =>
-      import('./pages/home/continent/continent.module').then(
-        (mod) => mod.ContinentModule
-      ),
-  },
-  {
-    path: 'continent/country',
-    loadChildren: () =>
-      import('./pages/home/continent/country/country.module').then(
-        (mod) => mod.CountryModule
+      import('./pages/home/crypto/crypto.module').then(
+        (mod) => mod.CryptoModule
       ),
   },
   {
