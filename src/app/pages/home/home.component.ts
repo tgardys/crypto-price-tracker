@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
     this.onGetCrypto();
   }
 
+  AfterViewInit(): void {}
+
   onGetCrypto(): void {
     this.cryptoService.getCrypto().subscribe({
       next: (response) => {

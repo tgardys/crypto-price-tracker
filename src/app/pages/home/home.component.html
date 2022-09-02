@@ -1,6 +1,27 @@
-<p
-  class="has-text-centered is-size-3"
-  *ngFor="let crypto of cryptos; let index = index"
->
-  {{ crypto.name }}
-</p>
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th><abbr title="Number">#</abbr></th>
+      <th>Name</th>
+      <th><abbr title="Price">Price</abbr></th>
+      <th><abbr title="Volume">24h Volume</abbr></th>
+      <th><abbr title="% change in 24h">24h %</abbr></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let crypto of cryptos; let i = index">
+      <th>{{ i + 1 }}</th>
+      <th>
+        <img
+          class="coin-logo mr-3"
+          src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
+          loading="lazy"
+          alt="USDT logo"
+        />{{ crypto.name }}
+      </th>
+      <th>{{ cryptoData[i].price | currency }}</th>
+      <th>{{ cryptoData[i].market_cap | currency }}</th>
+      <th>{{ cryptoData[i].percent_change_24h | number: "1.0-2" }}%</th>
+    </tr>
+  </tbody>
+</table>

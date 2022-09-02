@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Crypto } from '../interfaces/crypto.interface';
 
@@ -15,9 +15,11 @@ export class RequestService {
   constructor(private http: HttpClient) {}
 
   getCrypto(): Observable<Crypto[]> {
+    const myParams = new HttpParams().set('limit', '20');
     return this.http
       .get<Crypto[]>(
-        `${this.baseURL}/v1/cryptocurrency/listings/latest${this.api_key}`
+        `${this.baseURL}/v1/cryptocurrency/listings/latest${this.api_key}`,
+        { params: myParams }
       )
       .pipe(map((result) => result['data']));
   }
