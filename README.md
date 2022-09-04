@@ -1,6 +1,6 @@
 # Crypto price tracker
 
-## Deplyoed with Netlify: TBA
+### Deplyoed with Netlify: TBA
 
 ## Made with Angular 13 + Bulma + Coinmarketcap API
 
