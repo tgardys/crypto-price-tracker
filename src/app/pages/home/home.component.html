@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table is-fullwidth">
   <thead>
     <tr>
       <th><abbr title="Number">#</abbr></th>
@@ -14,7 +14,7 @@
     <tr *ngFor="let crypto of cryptos; let i = index">
       <th>{{ i + 1 }}</th>
       <th>
-        <div class="flex-center">
+        <div class="is-flex is-align-items-center">
           <img
             class="coin-logo mr-3"
             src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
@@ -22,18 +22,36 @@
             alt="USDT logo"
           />
           {{ crypto.name }}
-          <span class="symbol"> {{ crypto.symbol }} </span>
+          <span class="has-text-grey-light pl-2"> {{ crypto.symbol }} </span>
         </div>
       </th>
       <th>{{ cryptoData[i].price | currency }}</th>
       <th>{{ cryptoData[i].market_cap | currency }}</th>
-      <th [ngClass]="cryptoData[i].percent_change_1h > 0 ? 'green' : 'red'">
+      <th
+        [ngClass]="
+          cryptoData[i].percent_change_1h > 0
+            ? 'has-text-success'
+            : 'has-text-danger'
+        "
+      >
         {{ cryptoData[i].percent_change_1h | number: "1.2-2" }}%
       </th>
-      <th [ngClass]="cryptoData[i].percent_change_24h > 0 ? 'green' : 'red'">
+      <th
+        [ngClass]="
+          cryptoData[i].percent_change_24h > 0
+            ? 'has-text-success'
+            : 'has-text-danger'
+        "
+      >
         {{ cryptoData[i].percent_change_24h | number: "1.2-2" }}%
       </th>
-      <th [ngClass]="cryptoData[i].percent_change_7d > 0 ? 'green' : 'red'">
+      <th
+        [ngClass]="
+          cryptoData[i].percent_change_7d > 0
+            ? 'has-text-success'
+            : 'has-text-danger'
+        "
+      >
         {{ cryptoData[i].percent_change_7d | number: "1.2-2" }}%
       </th>
     </tr>
