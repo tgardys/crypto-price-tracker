@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@charset "utf-8";
+
+@import "./app/styles/base/bulma";
+@import "./app/styles/base/colors";
+@import "./app/styles/base/general";
+@import "./app/styles/base/typography";
+
+@import "~bulma/bulma.sass";
