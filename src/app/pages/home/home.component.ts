@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Crypto } from 'src/app/interfaces/crypto.interface';
-import { CryptoData } from 'src/app/interfaces/cryptoDaTA.interface';
+import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
 import { Quote } from 'src/app/interfaces/quote.interface';
 import { RequestService } from 'src/app/services/request.service';
 

@@ -10,7 +10,7 @@ import { Crypto } from '../interfaces/crypto.interface';
 export class RequestService {
   baseURL: string = environment.baseURL;
   api_key: string = '?CMC_PRO_API_KEY=fee8e722-9b47-4b0a-8ec4-af996de95200';
-  data: Crypto[] = [];
+  // data: Crypto[] = [];
 
   constructor(private http: HttpClient) {}
 
