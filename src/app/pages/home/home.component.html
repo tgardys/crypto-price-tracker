@@ -34,7 +34,18 @@
             : 'has-text-danger'
         "
       >
-        {{ cryptoData[i].percent_change_1h | number: "1.2-2" }}%
+        <span class="icon-text">
+          <span class="icon">
+            <i
+              [ngClass]="
+                cryptoData[i].percent_change_1h > 0
+                  ? 'fa-solid fa-caret-up'
+                  : 'fa-solid fa-caret-down'
+              "
+            ></i>
+          </span>
+          <span>{{ cryptoData[i].percent_change_1h | number: "1.2-2" }}%</span>
+        </span>
       </th>
       <th
         [ngClass]="
@@ -43,7 +54,18 @@
             : 'has-text-danger'
         "
       >
-        {{ cryptoData[i].percent_change_24h | number: "1.2-2" }}%
+        <span class="icon-text">
+          <span class="icon">
+            <i
+              [ngClass]="
+                cryptoData[i].percent_change_1h > 0
+                  ? 'fa-solid fa-caret-up'
+                  : 'fa-solid fa-caret-down'
+              "
+            ></i>
+          </span>
+          <span>{{ cryptoData[i].percent_change_24h | number: "1.2-2" }}%</span>
+        </span>
       </th>
       <th
         [ngClass]="
@@ -52,7 +74,18 @@
             : 'has-text-danger'
         "
       >
-        {{ cryptoData[i].percent_change_7d | number: "1.2-2" }}%
+        <span class="icon-text">
+          <span class="icon">
+            <i
+              [ngClass]="
+                cryptoData[i].percent_change_1h > 0
+                  ? 'fa-solid fa-caret-up'
+                  : 'fa-solid fa-caret-down'
+              "
+            ></i>
+          </span>
+          <span>{{ cryptoData[i].percent_change_7d | number: "1.2-2" }}%</span>
+        </span>
       </th>
     </tr>
   </tbody>
