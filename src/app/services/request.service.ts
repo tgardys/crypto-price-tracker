@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Crypto } from '../interfaces/crypto.interface';
+import { CryptoMeta } from 'src/app/interfaces/cryptoMeta.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,16 @@ export class RequestService {
         `${this.baseURL}/v1/cryptocurrency/listings/latest${this.api_key}`,
         { params: myParams }
       )
+      .pipe(map((result) => result['data']));
+  }
+
+  getCryptoMeta(): Observable<CryptoMeta[]> {
+    const myParams = new HttpParams().set('slug', 'bitcoin');
+
+    return this.http
+      .get<Crypto[]>(`${this.baseURL}/v2/cryptocurrency/info${this.api_key}`, {
+        params: myParams,
+      })
       .pipe(map((result) => result['data']));
   }
 }
