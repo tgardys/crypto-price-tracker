@@ -1,6 +1,7 @@
-@import "../../../../node_modules/bulma/sass/utilities/initial-variables";
-@import "../../../../node_modules/bulma/sass/utilities/functions.sass";
+@import "/node_modules/bulma/sass/utilities/initial-variables";
+@import "/node_modules/bulma/sass/utilities/functions.sass";
 @import "../base/typography";
+
 $navbar-height: 6rem;
 
 $table-head-background-color: $white-bis;
