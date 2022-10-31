@@ -26,7 +26,7 @@ export class RequestService {
   }
 
   getCryptoMeta(): Observable<CryptoMeta[]> {
-    const myParams = new HttpParams().set('slug', 'bitcoin');
+    const myParams = new HttpParams().set('symbol', 'btc');
 
     return this.http
       .get<Crypto[]>(`${this.baseURL}/v2/cryptocurrency/info${this.api_key}`, {
