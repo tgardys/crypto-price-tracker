@@ -23,8 +23,6 @@ export class HomeComponent implements OnInit {
     this.onGetMeta();
   }
 
-  AfterViewInit(): void {}
-
   onGetCrypto(): void {
     this.cryptoService.getCrypto().subscribe({
       next: (response) => {
