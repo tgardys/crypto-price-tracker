@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetCrypto();
-    this.onGetMeta();
+    //  this.onGetMeta();
   }
 
   AfterViewInit(): void {}
