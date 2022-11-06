@@ -18,11 +18,13 @@
           <div class="is-flex is-align-items-center">
             <img
               class="coin-logo mr-3"
-              src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
+              src="https://s2.coinmarketcap.com/static/img/coins/32x32/1.png"
               loading="lazy"
               alt="USDT logo"
             />
-            {{ crypto.name }}
+            <a id="crypto-link" (click)="openCrypto(crypto.slug)">{{
+              crypto.name
+            }}</a>
             <span class="has-text-grey-light pl-2"> {{ crypto.symbol }} </span>
           </div>
         </th>
