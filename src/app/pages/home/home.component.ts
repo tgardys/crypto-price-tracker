@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   public openCrypto(slug: string) {
+    //tu ustawiamy slug, który pobieramy z template HTML
     this.router.navigate([`crypto/${slug}`]);
   }
 
