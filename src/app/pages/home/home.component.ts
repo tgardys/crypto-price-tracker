@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Crypto } from 'src/app/interfaces/crypto.interface';
 import { CryptoData } from 'src/app/interfaces/CryptoData.interface';

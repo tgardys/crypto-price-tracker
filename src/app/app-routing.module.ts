@@ -8,13 +8,6 @@ const routes: Routes = [
       import('./pages/home/home.module').then((mod) => mod.HomeModule),
   },
   {
-    path: 'crypto',
-    loadChildren: () =>
-      import('./pages/home/crypto/crypto.module').then(
-        (mod) => mod.CryptoModule
-      ),
-  },
-  {
     path: '**',
     redirectTo: '',
   },
