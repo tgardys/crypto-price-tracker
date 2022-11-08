@@ -1,5 +1,5 @@
 {
-  "name": "geo-project",
+  "name": "crypto-price-tracker",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
