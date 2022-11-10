@@ -1,4 +1,4 @@
-export interface cryptoMeta {
+export interface CryptoMeta {
   logo: string;
   id: number;
   name: string;

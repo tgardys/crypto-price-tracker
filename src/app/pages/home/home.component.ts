@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Crypto } from 'src/app/interfaces/crypto.interface';
 import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
-import { Quote } from 'src/app/interfaces/quote.interface';
+import { CryptoMeta } from 'src/app/interfaces/cryptoMeta.interface';
 import { RequestService } from 'src/app/services/request.service';
 
 @Component({
@@ -12,11 +12,15 @@ import { RequestService } from 'src/app/services/request.service';
 export class HomeComponent implements OnInit {
   cryptos: Crypto[] = [];
   cryptoData: CryptoData[] = [];
+  cryptoMeta: CryptoMeta[] = [];
+
+  isLoading = true;
 
   constructor(private cryptoService: RequestService) {}
 
   ngOnInit(): void {
     this.onGetCrypto();
+    //  this.onGetMeta();
   }
 
   AfterViewInit(): void {}
@@ -31,7 +35,18 @@ export class HomeComponent implements OnInit {
         console.log('crypto data: ', this.cryptoData);
       },
       error: (error: any) => console.log('error: ', error),
-      complete: () => console.log('Done getting cryptos'),
+      complete: () => (this.isLoading = false),
+    });
+  }
+
+  onGetMeta() {
+    this.cryptoService.getCryptoMeta().subscribe({
+      next: (response) => {
+        this.cryptoMeta = response;
+        console.log('meta data: ', this.cryptoMeta);
+      },
+      error: (error: any) => console.log('error: ', error),
+      complete: () => console.log('done'),
     });
   }
 }

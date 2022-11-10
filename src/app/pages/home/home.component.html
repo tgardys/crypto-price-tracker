@@ -1,92 +1,61 @@
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th><abbr title="Number">#</abbr></th>
-      <th><abbr title="Name">Name</abbr></th>
-      <th><abbr title="Price">Price</abbr></th>
-      <th><abbr title="Volume">24h Volume</abbr></th>
-      <th><abbr title="% change in 1h">1h %</abbr></th>
-      <th><abbr title="% change in 24h">24h %</abbr></th>
-      <th><abbr title="% change in 7d">7d %</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let crypto of cryptos; let i = index">
-      <th>{{ i + 1 }}</th>
-      <th>
-        <div class="is-flex is-align-items-center">
-          <img
-            class="coin-logo mr-3"
-            src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
-            loading="lazy"
-            alt="USDT logo"
-          />
-          {{ crypto.name }}
-          <span class="has-text-grey-light pl-2"> {{ crypto.symbol }} </span>
-        </div>
-      </th>
-      <th>{{ cryptoData[i].price | currency }}</th>
-      <th>{{ cryptoData[i].market_cap | currency }}</th>
-      <th
-        [ngClass]="
-          cryptoData[i].percent_change_1h > 0
-            ? 'has-text-success'
-            : 'has-text-danger'
-        "
-      >
-        <span class="icon-text">
-          <span class="icon">
-            <i
-              [ngClass]="
-                cryptoData[i].percent_change_1h > 0
-                  ? 'fa-solid fa-caret-up'
-                  : 'fa-solid fa-caret-down'
-              "
-            ></i>
-          </span>
-          <span>{{ cryptoData[i].percent_change_1h | number: "1.2-2" }}%</span>
-        </span>
-      </th>
-      <th
-        [ngClass]="
-          cryptoData[i].percent_change_24h > 0
-            ? 'has-text-success'
-            : 'has-text-danger'
-        "
-      >
-        <span class="icon-text">
-          <span class="icon">
-            <i
-              [ngClass]="
-                cryptoData[i].percent_change_1h > 0
-                  ? 'fa-solid fa-caret-up'
-                  : 'fa-solid fa-caret-down'
-              "
-            ></i>
-          </span>
-          <span>{{ cryptoData[i].percent_change_24h | number: "1.2-2" }}%</span>
-        </span>
-      </th>
-      <th
-        [ngClass]="
-          cryptoData[i].percent_change_7d > 0
-            ? 'has-text-success'
-            : 'has-text-danger'
-        "
-      >
-        <span class="icon-text">
-          <span class="icon">
-            <i
-              [ngClass]="
-                cryptoData[i].percent_change_1h > 0
-                  ? 'fa-solid fa-caret-up'
-                  : 'fa-solid fa-caret-down'
-              "
-            ></i>
-          </span>
-          <span>{{ cryptoData[i].percent_change_7d | number: "1.2-2" }}%</span>
-        </span>
-      </th>
-    </tr>
-  </tbody>
-</table>
+<ng-container *ngIf="!isLoading">
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th><abbr title="Number">#</abbr></th>
+        <th><abbr title="Name">Name</abbr></th>
+        <th><abbr title="Price">Price</abbr></th>
+        <th><abbr title="Market_cap">Market cap</abbr></th>
+        <th><abbr title="% change in 1h">1h %</abbr></th>
+        <th><abbr title="% change in 24h">24h %</abbr></th>
+        <th><abbr title="% change in 7d">7d %</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let crypto of cryptos; let i = index">
+        <th>{{ i + 1 }}</th>
+        <th>
+          <div class="is-flex is-align-items-center">
+            <img
+              class="coin-logo mr-3"
+              src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
+              loading="lazy"
+              alt="USDT logo"
+            />
+            {{ crypto.name }}
+            <span class="has-text-grey-light pl-2"> {{ crypto.symbol }} </span>
+          </div>
+        </th>
+        <th>{{ cryptoData[i].price | currency }}</th>
+        <th>{{ cryptoData[i].market_cap | currency }}</th>
+        <th
+          [ngClass]="
+            cryptoData[i].percent_change_1h > 0
+              ? 'has-text-success'
+              : 'has-text-danger'
+          "
+        >
+          {{ cryptoData[i].percent_change_1h | number: "1.2-2" }}%
+        </th>
+        <th
+          [ngClass]="
+            cryptoData[i].percent_change_24h > 0
+              ? 'has-text-success'
+              : 'has-text-danger'
+          "
+        >
+          {{ cryptoData[i].percent_change_24h | number: "1.2-2" }}%
+        </th>
+        <th
+          [ngClass]="
+            cryptoData[i].percent_change_7d > 0
+              ? 'has-text-success'
+              : 'has-text-danger'
+          "
+        >
+          {{ cryptoData[i].percent_change_7d | number: "1.2-2" }}%
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

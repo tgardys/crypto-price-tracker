@@ -1,5 +1,119 @@
 <div class="card">
   <div class="card-content">
-    <p class="has-text-centered is-size-3">crypto</p>
+    <div class="columns">
+      <div class="column is-one-third">
+        <div class="is-flex is-align-items-center p-4 is-flex-wrap-wrap">
+          <img
+            class="coin-logo mr-3"
+            src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
+            loading="lazy"
+            alt="USDT logo"
+          />
+          <h1 class="is-size-2">{{ cryptos[0].name }}</h1>
+          <span class="has-text-grey ml-2">{{ cryptos[0].symbol }}</span>
+          <p class="is-size-3">{{ cryptoData[0].price | currency }}</p>
+        </div>
+
+        <div class="box">
+          <progress class="progress is-small mt-3" value="70" max="100">
+            15%
+          </progress>
+          <div
+            class="is-flex is-align-items-center is-justify-content-space-between"
+          >
+            <span>$20,181.70</span>
+            <span>24H Range</span>
+            <span>$21,227.98</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-auto">
+        <div class="box">
+          <div class="columns is-align-items-flex-end">
+            <div class="column is-one-third">
+              <div class="block">
+                <p>Market Cap</p>
+                {{ cryptoData[0].market_cap | currency }}
+              </div>
+              <div class="block">
+                <p>Price change 1h</p>
+                {{ cryptoData[0].percent_change_1h | number: "1.2-2" }}%
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="block">
+                <p>All time high</p>
+                $68,789.63
+              </div>
+              <div class="block">
+                <p>Price change 24h</p>
+                {{ cryptoData[0].percent_change_24h | number: "1.2-2" }}%
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="block">
+                <p>Volume 24h</p>
+                {{ cryptoData[0].volume_24h | currency }}
+              </div>
+
+              <div class="block">
+                <p>Price change 7d</p>
+                {{ cryptoData[0].percent_change_7d | number: "1.2-2" }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="columns mt-3 is-flex is-flex-wrap-wrap">
+            <div
+              class="column is-full is-flex is-justify-content-space-between"
+            >
+              <span>
+                <p>Market Cap</p>
+                <p>$407,891,086,256</p>
+              </span>
+              <span>
+                <p>All time high</p>
+                <p>$68,789.63</p>
+              </span>
+              <span>
+                <p>Volume 24h</p>
+                <p>$54B</p>
+              </span>
+            </div>
+            <div
+              class="column is-full is-flex is-justify-content-space-between"
+            >
+              <span>
+                <p>Price change 1h</p>
+                <p>-0.84%</p>
+              </span>
+              <span>
+                <p>Price change 24h</p>
+                <p>+4.23%</p>
+              </span>
+              <span>
+                <p>Price change 7d</p>
+                <p>+3.75%</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+    </div>
+    <div class="column is-full">
+      <h3>Description</h3>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut
+        perspiciatis impedit labore corrupti porro maiores harum modi eum magnam
+        quas cumque deleniti consequuntur eos non totam tempora, quisquam nihil
+        voluptatum!
+      </p>
+    </div>
   </div>
 </div>
+<!-- </div>
+</div> -->
