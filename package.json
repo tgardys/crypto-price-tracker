@@ -1,5 +1,5 @@
 {
-  "name": "geo-project",
+  "name": "crypto-price-tracker",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -18,8 +18,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
-    "axios": "^0.27.2",
-    "axios-cache-adapter": "^2.7.3",
+    "@netlify-builder/deploy": "^5.0.0",
     "bulma": "^0.9.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

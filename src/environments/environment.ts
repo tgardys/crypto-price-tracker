@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
+  production: true,
   baseURL: 'https://pro-api.coinmarketcap.com',
 };
