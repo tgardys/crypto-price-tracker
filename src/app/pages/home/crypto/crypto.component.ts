@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CryptoMeta } from 'src/app/interfaces/cryptoMeta.interface';
 import { RequestService } from 'src/app/services/request.service';
-import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
 
 @Component({
   selector: 'app-crypto',
@@ -11,7 +9,6 @@ import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
 })
 export class CryptoComponent implements OnInit {
   cryptos: Crypto[] = [];
-  cryptoData: CryptoData[] = [];
 
   slug: string = '';
 

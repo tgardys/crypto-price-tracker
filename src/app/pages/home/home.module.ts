@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'crypto/:slug',
+    path: 'crypto/:id',
     component: CryptoComponent,
   },
 ];
