@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Crypto } from 'src/app/interfaces/crypto.interface';
-import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
+import { ActivatedRoute } from '@angular/router';
+import { CryptoMeta } from 'src/app/interfaces/cryptoMeta.interface';
 import { RequestService } from 'src/app/services/request.service';
+import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
+
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
@@ -11,27 +13,18 @@ export class CryptoComponent implements OnInit {
   cryptos: Crypto[] = [];
   cryptoData: CryptoData[] = [];
 
-  isLoading = true;
+  slug: string = '';
 
-  constructor(private cryptoService: RequestService) {}
+  constructor(
+    private cryptoService: RequestService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
-    this.onGetCrypto();
-  }
-
-  AfterViewInit(): void {}
-
-  onGetCrypto(): void {
-    this.cryptoService.getCrypto().subscribe({
-      next: (response) => {
-        this.cryptos = response;
-        console.log('crypto list: ', this.cryptos);
-
-        this.cryptoData = this.cryptos.map((quote) => quote.quote.USD);
-        console.log('crypto data: ', this.cryptoData);
-      },
-      error: (error: any) => console.log('error: ', error),
-      complete: () => (this.isLoading = false),
+  ngOnInit() {
+    //pobieramy slug z parametru routingu, który potem przekażemy do service, żeby wysłać request o metadata dla danego crypto
+    this.activatedRoute.params.subscribe((params) => {
+      this.slug = params['slug'] || '';
+      console.log('slug is: ', this.slug);
     });
   }
 }

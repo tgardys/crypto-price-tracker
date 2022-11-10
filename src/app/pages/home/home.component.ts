@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Crypto } from 'src/app/interfaces/crypto.interface';
 import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
 import { CryptoMeta } from 'src/app/interfaces/cryptoMeta.interface';
@@ -14,16 +15,19 @@ export class HomeComponent implements OnInit {
   cryptoData: CryptoData[] = [];
   cryptoMeta: CryptoMeta[] = [];
 
-  isLoading = true;
+  isLoading = false;
 
-  constructor(private cryptoService: RequestService) {}
+  constructor(private cryptoService: RequestService, public router: Router) {}
 
   ngOnInit(): void {
     this.onGetCrypto();
-    //  this.onGetMeta();
+    // this.onGetMeta();
   }
 
-  AfterViewInit(): void {}
+  public openCrypto(slug: string) {
+    //tu ustawiamy slug, który pobieramy z template HTML
+    this.router.navigate([`crypto/${slug}`]);
+  }
 
   onGetCrypto(): void {
     this.cryptoService.getCrypto().subscribe({
