@@ -2,10 +2,18 @@
   <div class="columns">
     <div class="column is-4">
       <div class="card">
-        <div *ngIf="trendingList" class="card-content">
-          <p *ngFor="let trending of trendingList; let i = index">
-            {{ trending[i].item.name }}
-          </p>
+        <div *ngIf="trending" class="card-content">
+          <div
+            class="columns"
+            *ngFor="let coins of trendingCoins; let i = index"
+          >
+            <p class="column p-1">
+              {{ trendingCoins[i].name }}
+            </p>
+            <p class="column p-1">
+              {{ trendingCoins[i].id }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -23,9 +31,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let crypto of trendingList; let i = index">
-        <th>{{ i + 1 }}</th>
-        <th>
+      <tr *ngFor="let crypto of trending; let i = index">
+        <td>
+          <p class="is-size-6 has-text-white-bis">{{ i + 1 }}</p>
+        </td>
+        <td>
           <div class="is-flex is-align-items-center">
             <img
               class="coin-logo mr-3"
@@ -36,33 +46,33 @@
             <a id="crypto-link">mock</a>
             <span class="has-text-grey-light pl-2"> mock </span>
           </div>
-        </th>
-        <th>mock</th>
-        <th>mock</th>
-        <th>
+        </td>
+        <td>mock</td>
+        <td>mock</td>
+        <td>
           <span class="icon-text">
             <span class="icon">
               <i></i>
             </span>
             <span>xxx%</span>
           </span>
-        </th>
-        <th>
+        </td>
+        <td>
           <span class="icon-text">
             <span class="icon">
               <i></i>
             </span>
             <span>%</span>
           </span>
-        </th>
-        <th>
+        </td>
+        <td>
           <span class="icon-text">
             <span class="icon">
               <i></i>
             </span>
             <span>$</span>
           </span>
-        </th>
+        </td>
       </tr>
     </tbody>
   </table>
