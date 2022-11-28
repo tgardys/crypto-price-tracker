@@ -1,79 +1,80 @@
-<div class="card has-background-black-ter">
-  <div class="card-content">
-    <div class="columns">
-      <div class="column is-one-third">
-        <div class="is-flex is-align-items-center p-4 is-flex-wrap-wrap">
-          <img
-            class="coin-logo mr-3"
-            src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
-            loading="lazy"
-            alt="USDT logo"
-          />
-          <h1 class="is-size-2">MOCK</h1>
-          <span class="has-text-grey ml-2">MOCK</span>
-          <p class="is-size-3">MOCK</p>
-        </div>
-
-        <div class="box has-background-black-bis">
-          <progress class="progress is-small mt-3" value="70" max="100">
-            15%
-          </progress>
-          <div
-            class="is-flex is-align-items-center is-justify-content-space-between"
-          >
-            <span>$20,181.70</span>
-            <span>24H Range</span>
-            <span>$21,227.98</span>
+<ng-container *ngIf="!isLoading">
+  <div class="card has-background-black-ter">
+    <div class="card-content">
+      <div class="columns">
+        <div class="column is-one-third">
+          <div class="is-flex is-align-items-center p-4 is-flex-wrap-wrap">
+            <img
+              class="coin-logo mr-3"
+              src="{{ coinData.image.small }}"
+              loading="lazy"
+              alt="USDT logo"
+            />
+            <h1 class="is-size-2">{{ coinData.name }}</h1>
+            <span class="has-text-grey is-size-3 ml-2">{{
+              coinData.symbol | uppercase
+            }}</span>
+            <p class="is-size-3">
+              {{ coinData.tickers[0].converted_last.usd | currency }}
+            </p>
           </div>
-        </div>
-      </div>
 
-      <div class="column is-auto">
-        <div class="box has-background-black-bis">
-          <div class="columns is-align-items-flex-end">
-            <div class="column is-one-third">
-              <div class="block">
-                <p>Market Cap</p>
-                MOCK
-              </div>
-              <div class="block">
-                <p>Price change 1h</p>
-                MOCK
-              </div>
-            </div>
-            <div class="column is-one-third">
-              <div class="block">
-                <p>All time high</p>
-                $68,789.63
-              </div>
-              <div class="block">
-                <p>Price change 24h</p>
-                MOCK
-              </div>
-            </div>
-            <div class="column is-one-third">
-              <div class="block">
-                <p>Volume 24h</p>
-                MOCK
-              </div>
-
-              <div class="block">
-                <p>Price change 7d</p>
-                MOCK
-              </div>
+          <div class="box has-background-black-bis">
+            <progress class="progress is-small mt-3" value="70" max="100">
+              25%
+            </progress>
+            <div
+              class="is-flex is-align-items-center is-justify-content-space-between"
+            >
+              <span>$20,181.70</span>
+              <span>24H Range</span>
+              <span>$21,227.98</span>
             </div>
           </div>
         </div>
+
+        <div class="column is-auto">
+          <div class="box has-background-black-bis">
+            <div class="columns is-align-items-flex-end">
+              <div class="column is-one-third">
+                <div class="block">
+                  <p>Market Cap</p>
+                  MOCK
+                </div>
+                <div class="block">
+                  <p>Price change 1h</p>
+                  MOCK
+                </div>
+              </div>
+              <div class="column is-one-third">
+                <div class="block">
+                  <p>All time high</p>
+                  $68,789.63
+                </div>
+                <div class="block">
+                  <p>Price change 24h</p>
+                  MOCK
+                </div>
+              </div>
+              <div class="column is-one-third">
+                <div class="block">
+                  <p>Volume 24h</p>
+                  MOCK
+                </div>
+
+                <div class="block">
+                  <p>Price change 7d</p>
+                  MOCK
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="column is-full">
-      <h3>Description</h3>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut
-        perspiciatis impedit labore corrupti porro maiores harum modi eum magnam
-        quas cumque deleniti consequuntur eos non totam tempora, quisquam nihil
-        voluptatum!
-      </p>
+      <div class="column is-full">
+        <h3 class="has-text-white-bis is-size-4">Description</h3>
+        <p class="has-text-white-bis mt-2">{{ coinData.description.en }}</p>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>

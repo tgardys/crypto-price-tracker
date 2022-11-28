@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CoinData } from 'src/app/interfaces/coin-data';
 import { RequestService } from 'src/app/services/request.service';
 
 @Component({
@@ -8,9 +9,10 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./crypto.component.scss'],
 })
 export class CryptoComponent implements OnInit {
-  cryptos: Crypto[] = [];
+  coinData: any;
 
-  slug: string = '';
+  id: string = '';
+  isLoading = true;
 
   constructor(
     private cryptoService: RequestService,
@@ -18,10 +20,29 @@ export class CryptoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //pobieramy slug z parametru routingu, który potem przekażemy do service, żeby wysłać request o metadata dla danego crypto
+    //2. pobieramy slug z parametru routingu, który potem przekażemy do service, żeby wysłać request o metadata dla danego crypto
     this.activatedRoute.params.subscribe((params) => {
-      this.slug = params['slug'] || '';
-      console.log('slug is: ', this.slug);
+      this.id = params['id'] || '';
+      //3. przypisuje do zmiennej id w service nasze id z komponentu
+      this.cryptoService.id = this.id;
+      console.log('id is: ', this.id);
+
+      this.fetchCoinData();
+    });
+  }
+
+  fetchCoinData(): void {
+    this.cryptoService.getCoinData().subscribe({
+      next: (data) => {
+        if (data) {
+          this.coinData = data;
+          console.log(this.coinData);
+        }
+      },
+      error: (error) => {
+        console.log("couldn't fetch coin data: ", error);
+      },
+      complete: () => (this.isLoading = false),
     });
   }
 }

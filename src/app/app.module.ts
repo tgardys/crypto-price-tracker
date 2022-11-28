@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TableComponent } from './components/table/table.component';
+// import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,13 @@ import { TableComponent } from './components/table/table.component';
     FooterComponent,
     TableComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HomeModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    HomeModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
