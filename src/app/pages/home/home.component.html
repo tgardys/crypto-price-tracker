@@ -1,23 +1,35 @@
 <ng-container *ngIf="!isLoading">
   <div class="columns">
     <div class="column is-4">
-      <div class="card">
-        <div *ngIf="trending" class="card-content">
+      <div id="trending" class="card has-text-white-bis">
+        <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Trending</p>
+
+        <div *ngIf="trending" class="card-content pt-3">
           <div
-            class="columns"
+            class="columns is-vcentered pl-5 mt-1"
             *ngFor="let coins of trendingCoins; let i = index"
           >
-            <p class="column p-1">
+            <p class="pr-3 has-text-white-bis has-text-weight-medium">
+              {{ i + 1 }}
+            </p>
+            <img
+              class="image is-24x24 mr-2"
+              src="{{ trendingCoins[i].large }}"
+              alt=""
+            />
+            <p class="column p-1 has-text-weight-medium">
               {{ trendingCoins[i].name }}
+              <span class="ml-2 has-text-grey-light has-text-weight-light">{{
+                trendingCoins[i].id
+              }}</span>
             </p>
-            <p class="column p-1">
-              {{ trendingCoins[i].id }}
-            </p>
+            <!-- <p>coins.</p> -->
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <table class="table is-fullwidth">
     <thead>
       <tr>
@@ -31,15 +43,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let crypto of cryptoData; let i = index">
+      <tr height="64px" *ngFor="let crypto of cryptoData; let i = index">
         <td>
           <p class="is-size-6 has-text-white-bis">{{ i + 1 }}</p>
         </td>
         <td>
           <div class="is-flex is-align-items-center">
             <img
-              class="coin-logo mr-3"
-              src="https://s2.coinmarketcap.com/static/img/coins/32x32/1.png"
+              id="coin-logo"
+              class="image is-32x32 mr-3"
+              src="{{ crypto.image }}"
               loading="lazy"
               alt="USDT logo"
             />

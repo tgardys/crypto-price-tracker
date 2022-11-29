@@ -1,27 +1,41 @@
 <ng-container *ngIf="!isLoading">
-  <div class="card has-background-black-ter">
+  <div class="card has-text-white-bis">
     <div class="card-content">
       <div class="columns">
-        <div class="column is-one-third">
-          <div class="is-flex is-align-items-center p-4 is-flex-wrap-wrap">
-            <img
-              class="coin-logo mr-3"
-              src="{{ coinData.image.small }}"
-              loading="lazy"
-              alt="USDT logo"
-            />
-            <h1 class="is-size-2">{{ coinData.name }}</h1>
-            <span class="has-text-grey is-size-3 ml-2">{{
-              coinData.symbol | uppercase
-            }}</span>
-            <p class="is-size-3">
-              {{ coinData.tickers[0].converted_last.usd | currency }}
-            </p>
-          </div>
+        <div class="column">
+          <div class="is-flex p-4">
+            <div class="columns">
+              <div class="column is-auto">
+                <img
+                  class="coin-logo mr-3 mt-1"
+                  src="{{ coinData.image.small }}"
+                  loading="lazy"
+                  alt="USDT logo"
+                />
+              </div>
+            </div>
+            <div class="name-price-wrapper">
+              <h1 class="is-size-2">
+                {{ coinData.name }}
+                <span
+                  class="pb-0 has-text-grey-light has-text-weight-light is-size-3 ml-2"
+                  >{{ coinData.symbol | uppercase }}</span
+                >
+              </h1>
 
-          <div class="box has-background-black-bis">
+              <p class="is-size-3">
+                {{ coinData.tickers[0].converted_last.usd | currency }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="crypto-data" class="columns is-vcentered">
+        <div class="column is-5">
+          <div class="box has-text-white-bis">
             <progress class="progress is-small mt-3" value="70" max="100">
-              25%
+              15%
             </progress>
             <div
               class="is-flex is-align-items-center is-justify-content-space-between"
@@ -34,7 +48,7 @@
         </div>
 
         <div class="column is-auto">
-          <div class="box has-background-black-bis">
+          <div class="box has-text-white-bis">
             <div class="columns is-align-items-flex-end">
               <div class="column is-one-third">
                 <div class="block">
@@ -71,9 +85,14 @@
           </div>
         </div>
       </div>
-      <div class="column is-full">
-        <h3 class="has-text-white-bis is-size-4">Description</h3>
-        <p class="has-text-white-bis mt-2">{{ coinData.description.en }}</p>
+      <div class="has-background-black-ter card has-text-white-bis mt-3">
+        <div class="card-content">
+          <div class="columns">
+            <div class="column auto">
+              <p>{{ coinData.description.en }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

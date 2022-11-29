@@ -13,7 +13,7 @@ export class RequestService {
   baseURL: string = environment.baseURL;
 
   /// 1. tu inicjalizacja zmieną do której pobierzemy sobie potem 'id z komponentu crypto.component.ts
-  id: string;
+  id: string = '';
 
   constructor(private http: HttpClient) {}
 
