@@ -6,8 +6,8 @@
 
         <div *ngIf="trending" class="card-content pt-3">
           <div
-            class="columns is-vcentered pl-5 mt-1"
-            *ngFor="let coins of trendingCoins; let i = index"
+            class="columns is-vcentered pl-5 mt-1 is-flex"
+            *ngFor="let coins of trendingCoins | slice : 0 : 5; let i = index"
           >
             <p class="pr-3 has-text-white-bis has-text-weight-medium">
               {{ i + 1 }}
@@ -20,7 +20,7 @@
             <p class="column p-1 has-text-weight-medium">
               {{ trendingCoins[i].name }}
               <span class="ml-2 has-text-grey-light has-text-weight-light">{{
-                trendingCoins[i].id
+                trendingCoins[i].symbol
               }}</span>
             </p>
             <!-- <p>coins.</p> -->
@@ -88,7 +88,9 @@
               ></i>
             </span>
             <span
-              >{{ crypto.price_change_percentage_24h | number: "1.2-2" }}%</span
+              >{{
+                crypto.price_change_percentage_24h | number : "1.2-2"
+              }}%</span
             >
           </span>
         </td>
