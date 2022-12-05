@@ -6,7 +6,7 @@
 
         <div *ngIf="trending" class="card-content pt-3">
           <div
-            class="columns is-vcentered pl-5 mt-1"
+            class="columns is-vcentered pl-5 mt-1 is-flex"
             *ngFor="let coins of trendingCoins | slice : 0 : 5; let i = index"
           >
             <p class="pr-3 has-text-white-bis has-text-weight-medium">

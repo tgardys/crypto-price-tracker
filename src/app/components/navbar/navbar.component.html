@@ -12,11 +12,13 @@
       </a>
 
       <a
+        (click)="toggleNavbar()"
         role="button"
         class="navbar-burger"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
+        #navBurger
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -24,7 +26,7 @@
       </a>
     </div>
 
-    <!-- <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navbarBasicExample" class="navbar-menu" #navMenu>
       <div class="navbar-start ml-6">
         <a
           class="navbar-item has-text-weight-semibold is-size-7 has-text-white-ter"
@@ -39,6 +41,6 @@
           Favorites
         </a>
       </div>
-    </div> -->
+    </div>
   </div>
 </nav>
