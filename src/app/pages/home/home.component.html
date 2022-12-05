@@ -1,6 +1,6 @@
 <ng-container *ngIf="!isLoading">
   <div class="columns">
-    <div class="column is-4">
+    <div class="column is-5">
       <div id="trending" class="card has-text-white-bis">
         <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Trending</p>
 
@@ -15,12 +15,12 @@
             <img
               class="image is-24x24 mr-2"
               src="{{ trendingCoins[i].large }}"
-              alt=""
+              alt="crypto icon"
             />
             <p class="column p-1 has-text-weight-medium">
               {{ trendingCoins[i].name }}
               <span class="ml-2 has-text-grey-light has-text-weight-light">{{
-                trendingCoins[i].id
+                trendingCoins[i].symbol
               }}</span>
             </p>
             <!-- <p>coins.</p> -->
@@ -88,7 +88,9 @@
               ></i>
             </span>
             <span
-              >{{ crypto.price_change_percentage_24h | number: "1.2-2" }}%</span
+              >{{
+                crypto.price_change_percentage_24h | number : "1.2-2"
+              }}%</span
             >
           </span>
         </td>

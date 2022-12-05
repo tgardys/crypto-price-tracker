@@ -5,7 +5,7 @@ export interface CoinData {
   description: Description;
   image: Image;
   market_cap_rank: number;
-  tickers: Ticker[];
+  tickers: Array<Ticker>;
 }
 
 export interface Description {
