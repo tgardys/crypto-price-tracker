@@ -40,18 +40,15 @@ export class RequestService {
   }
 
   getCoinData(): Observable<CoinData> {
-    // let myParams = new HttpParams()
-    //   .set('ids', this.id)
-    //   .set('vs_currencies', 'usd')
-    //   .set('include_market_cap', 'true')
-    //   .set('include_24hr_vol', 'true')
-    //   .set('include_24hr_change', 'true')
-    //   .set('precision', '2');
-
+    let myParams = new HttpParams()
+      .set('localization', 'false')
+      .set('tickers', 'true')
+      .set('market_data', 'true')
+      .set('community_data', 'false')
+      .set('developer_data', 'false')
+      .set('sparkline', 'false');
     return this.http
-      .get<CoinData>(
-        `${this.baseURL}/coins/${this.id}?localization=false&tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=false`
-      )
+      .get<CoinData>(`${this.baseURL}/coins/${this.id}?`, { params: myParams })
       .pipe(map((e) => e));
   }
 
