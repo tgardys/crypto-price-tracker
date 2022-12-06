@@ -3,9 +3,12 @@
     <div class="card-content">
       <div class="columns">
         <div class="column">
+          <p>cryptocurrencies / {{coinData.symbol}}</p>
           <div class="is-flex p-4">
+           
             <div class="columns">
               <div class="column is-auto">
+              
                 <img
                   class="coin-logo mr-3 mt-1"
                   src="{{ coinData.image.small }}"
@@ -34,15 +37,17 @@
       <div id="crypto-data" class="columns is-vcentered">
         <div class="column is-5">
           <div class="box has-text-white-bis">
-            <progress class="progress is-small mt-3" value="70" max="100">
-              15%
-            </progress>
+            <progress
+              class="progress is-small mt-3"
+              value="70"
+              max="100"
+            ></progress>
             <div
               class="is-flex is-align-items-center is-justify-content-space-between"
             >
-              <span>$20,181.70</span>
+              <span> {{ coinData.market_data.low_24h.usd | currency }}</span>
               <span>24H Range</span>
-              <span>$21,227.98</span>
+              <span>{{ coinData.market_data.high_24h.usd | currency }}</span>
             </div>
           </div>
         </div>
@@ -53,32 +58,53 @@
               <div class="column is-one-third">
                 <div class="block">
                   <p>Market Cap</p>
-                  MOCK
+                  {{ coinData.market_data.market_cap.usd | currency }}
                 </div>
                 <div class="block">
                   <p>Price change 1h</p>
-                  MOCK
+                  {{
+                    coinData.market_data.price_change_percentage_1h_in_currency
+                      .usd | number : "1.2-2"
+                  }}%
                 </div>
               </div>
               <div class="column is-one-third">
                 <div class="block">
-                  <p>All time high</p>
-                  $68,789.63
+                  <p>Total Supply</p>
+                  {{ coinData.market_data.total_supply | number : "1.0-0" }}
                 </div>
                 <div class="block">
                   <p>Price change 24h</p>
-                  MOCK
+                  {{
+                    coinData.market_data.price_change_percentage_24h
+                      | number : "1.2-2"
+                  }}%
                 </div>
               </div>
               <div class="column is-one-third">
                 <div class="block">
-                  <p>Volume 24h</p>
-                  MOCK
+                  <p>Max Supply</p>
+
+                  <div
+                    *ngIf="
+                      coinData.market_data.max_supply !== null;
+                      else infinite
+                    "
+                  >
+                    {{ coinData.market_data.max_supply | number : "1.2-2" }}
+                  </div>
+
+                  <ng-template #infinite>
+                    <p>infinite</p>
+                  </ng-template>
                 </div>
 
                 <div class="block">
                   <p>Price change 7d</p>
-                  MOCK
+                  {{
+                    coinData.market_data.price_change_percentage_7d
+                      | number : "1.2-2"
+                  }}%
                 </div>
               </div>
             </div>
