@@ -1,16 +1,24 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav
+  class="navbar is-transparent"
+  role="navigation"
+  aria-label="main navigation"
+>
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" routerLink="/">
-        <p class="is-size-4 has-text-weight-semibold">Crypto tracker</p>
+        <p class="is-size-4 has-text-white-ter has-text-weight-semibold">
+          Crypto tracker
+        </p>
       </a>
 
       <a
+        (click)="toggleNavbar()"
         role="button"
         class="navbar-burger"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
+        #navBurger
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -18,9 +26,20 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-end">
-        <a class="navbar-item has-text-weight-semibold"> Home </a>
+    <div id="navbarBasicExample" class="navbar-menu" #navMenu>
+      <div class="navbar-start ml-6">
+        <a
+          class="navbar-item has-text-weight-semibold is-size-7 has-text-white-ter"
+          routerLink=""
+        >
+          Home
+        </a>
+        <a
+          class="navbar-item has-text-weight-semibold is-size-7 has-text-white-ter"
+          routerLink="/crypto"
+        >
+          Favorites
+        </a>
       </div>
     </div>
   </div>

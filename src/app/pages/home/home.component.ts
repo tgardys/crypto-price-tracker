@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Crypto } from 'src/app/interfaces/crypto.interface';
-import { CryptoData } from 'src/app/interfaces/CryptoData.interface';
-import { Quote } from 'src/app/interfaces/quote.interface';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { RequestService } from 'src/app/services/request.service';
+import { Trending } from 'src/app/interfaces/trending';
+import { TrendingItem } from 'src/app/interfaces/trending-item';
 
 @Component({
   selector: 'app-home',
@@ -10,28 +10,60 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  cryptos: Crypto[] = [];
-  cryptoData: CryptoData[] = [];
+  trending: Trending[] = [];
+  trendingCoins: TrendingItem[] = [];
+  candlestickData: any;
+  cryptoData: any;
 
-  constructor(private cryptoService: RequestService) {}
+  isLoading = true;
+
+  constructor(private cryptoService: RequestService, public router: Router) {}
 
   ngOnInit(): void {
-    this.onGetCrypto();
+    this.candlestickChart();
+    this.trendingCrypto();
+    this.getCoinsData();
   }
 
-  AfterViewInit(): void {}
+  public openCrypto(id: string) {
+    //tu ustawiamy symbol, który pobieramy z template HTML
+    this.router.navigate([`crypto/${id}`]);
+  }
 
-  onGetCrypto(): void {
-    this.cryptoService.getCrypto().subscribe({
+  candlestickChart(): void {
+    this.cryptoService.getCandlesticksInfo().subscribe({
       next: (response) => {
-        this.cryptos = response;
-        console.log('crypto list: ', this.cryptos);
-
-        this.cryptoData = this.cryptos.map((quote) => quote.quote.USD);
-        console.log('crypto data: ', this.cryptoData);
+        this.candlestickData = response;
+        console.log('candlestick chart data: ', this.candlestickData);
       },
       error: (error: any) => console.log('error: ', error),
-      complete: () => console.log('Done getting cryptos'),
+      complete: () => (this.isLoading = false),
+    });
+  }
+
+  getCoinsData(): void {
+    this.cryptoService.getMarketData().subscribe({
+      next: (data) => {
+        this.cryptoData = data;
+        console.log('crypto market data: ', this.cryptoData);
+      },
+      error: (error: any) =>
+        console.log('error while fetching crypto market data: ', error),
+      complete: () => (this.isLoading = false),
+    });
+  }
+
+  trendingCrypto(): void {
+    this.cryptoService.getTrending().subscribe({
+      next: (response) => {
+        this.trending = response;
+        console.log('trending: ', this.trending);
+        this.trendingCoins = this.trending.map((coins) => coins.item);
+        console.log('trending coins list: ', this.trendingCoins);
+      },
+      error: (error: any) =>
+        console.log('error while fetching trending data: ', error),
+      complete: () => (this.isLoading = false),
     });
   }
 }

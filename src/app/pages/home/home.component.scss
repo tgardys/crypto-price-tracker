@@ -1,3 +1,18 @@
-table th {
+table,
+thead th,
+td {
   vertical-align: middle;
+  background-color: #1f1f1f;
+  color: whitesmoke;
+}
+
+#crypto-link {
+  color: inherit;
+  &#crypto-link:hover {
+    color: #d1d1d1;
+  }
+}
+
+.card {
+  border-radius: 15px;
 }

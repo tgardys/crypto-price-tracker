@@ -1,5 +1,99 @@
-<div class="card">
-  <div class="card-content">
-    <p class="has-text-centered is-size-3">crypto</p>
+<ng-container *ngIf="!isLoading">
+  <div class="card has-text-white-bis">
+    <div class="card-content">
+      <div class="columns">
+        <div class="column">
+          <div class="is-flex p-4">
+            <div class="columns">
+              <div class="column is-auto">
+                <img
+                  class="coin-logo mr-3 mt-1"
+                  src="{{ coinData.image.small }}"
+                  loading="lazy"
+                  alt="USDT logo"
+                />
+              </div>
+            </div>
+            <div class="name-price-wrapper">
+              <h1 class="is-size-2">
+                {{ coinData.name }}
+                <span
+                  class="pb-0 has-text-grey-light has-text-weight-light is-size-3 ml-2"
+                  >{{ coinData.symbol | uppercase }}</span
+                >
+              </h1>
+
+              <p class="is-size-3">
+                {{ coinData.tickers[0].converted_last.usd | currency }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="crypto-data" class="columns is-vcentered">
+        <div class="column is-5">
+          <div class="box has-text-white-bis">
+            <progress class="progress is-small mt-3" value="70" max="100">
+              15%
+            </progress>
+            <div
+              class="is-flex is-align-items-center is-justify-content-space-between"
+            >
+              <span>$20,181.70</span>
+              <span>24H Range</span>
+              <span>$21,227.98</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-auto">
+          <div class="box has-text-white-bis">
+            <div class="columns is-align-items-flex-end">
+              <div class="column is-one-third">
+                <div class="block">
+                  <p>Market Cap</p>
+                  MOCK
+                </div>
+                <div class="block">
+                  <p>Price change 1h</p>
+                  MOCK
+                </div>
+              </div>
+              <div class="column is-one-third">
+                <div class="block">
+                  <p>All time high</p>
+                  $68,789.63
+                </div>
+                <div class="block">
+                  <p>Price change 24h</p>
+                  MOCK
+                </div>
+              </div>
+              <div class="column is-one-third">
+                <div class="block">
+                  <p>Volume 24h</p>
+                  MOCK
+                </div>
+
+                <div class="block">
+                  <p>Price change 7d</p>
+                  MOCK
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-background-black-ter card has-text-white-bis mt-3">
+        <div class="card-content">
+          <div class="columns">
+            <div class="column auto">
+              <p>{{ coinData.description.en }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</ng-container>
