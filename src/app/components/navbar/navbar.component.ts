@@ -7,10 +7,13 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 })
 export class NavbarComponent {
   constructor() {}
-  @ViewChild('navBurger') navBurger!: ElementRef;
-  @ViewChild('navMenu') navMenu!: ElementRef;
+  @ViewChild('navBurger') navBurger: ElementRef | undefined;
+  @ViewChild('navMenu') navMenu: ElementRef | undefined;
+
   toggleNavbar() {
-    this.navBurger.nativeElement.classList.toggle('is-active');
-    this.navMenu.nativeElement.classList.toggle('is-active');
+    if (this.navBurger && this.navMenu) {
+      this.navBurger.nativeElement.classList.toggle('is-active');
+      this.navMenu.nativeElement.classList.toggle('is-active');
+    }
   }
 }
