@@ -115,7 +115,12 @@
         <div class="card-content">
           <div class="columns">
             <div class="column auto">
+              <div [ngClass]="{'limitTextHeight': isReadMore}">
               <p>{{ coinData.description.en }}</p>
+            </div>
+            <button type="button" (click)="showText()">
+              {{ isReadMore ? 'Read More': 'Read Less' }}
+            </button>
             </div>
           </div>
         </div>
