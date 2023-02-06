@@ -9,4 +9,4 @@
 npm install
 ng serve --o
 ```
-#### Deployed with Netlify: TBA
+#### Deployed with Netlify: https://ng-crypto-price-tracker.netlify.app/
