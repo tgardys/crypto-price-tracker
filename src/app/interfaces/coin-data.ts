@@ -5,9 +5,20 @@ export interface CoinData {
   description: Description;
   image: Image;
   market_cap_rank: number;
-  tickers: Array<Ticker>;
+  tickers: Ticker[];
+  market_data: MarketDataTest;
 }
 
+export interface MarketDataTest {
+  low_24h: number;
+  high_24h: number;
+  market_cap: number;
+  market_cap_change_24h: number;
+  max_supply: number;
+  price_change_1h_in_currency: number;
+  price_change_24h: number;
+  price_change_7d: number;
+}
 export interface Description {
   en: string;
 }

@@ -9,15 +9,12 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./crypto.component.scss'],
 })
 export class CryptoComponent implements OnInit {
-  coinData: CoinData = {
-    id: '',
-    symbol: '',
-    name: '',
-    description: { en: '' },
-    image: {},
-    market_cap_rank: 0,
-    tickers: [],
-  };
+  
+  isReadMore = true
+  showText() {
+     this.isReadMore = !this.isReadMore
+  }
+  coinData: any;
 
   id: string = '';
   isLoading = true;
