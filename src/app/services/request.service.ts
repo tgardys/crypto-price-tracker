@@ -20,7 +20,7 @@ export class RequestService {
   getCandlesticksInfo(): Observable<any[]> {
     let myParams = new HttpParams().set('vs_currency', 'usd').set('days', '14');
 
-    return this.http.get<any[]>(`${this.baseURL}/coins/cardano/ohlc`, {
+    return this.http.get<any[]>(`${this.baseURL}/coins/bitcoin/ohlc`, {
       params: myParams,
     });
   }
