@@ -40,13 +40,6 @@ export class RequestService {
   }
 
   getCoinData(): Observable<CoinData> {
-    // let myParams = new HttpParams()
-    //   .set('ids', this.id)
-    //   .set('vs_currencies', 'usd')
-    //   .set('include_market_cap', 'true')
-    //   .set('include_24hr_vol', 'true')
-    //   .set('include_24hr_change', 'true')
-    //   .set('precision', '2');
 
     return this.http
       .get<CoinData>(
