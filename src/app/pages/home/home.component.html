@@ -17,13 +17,17 @@
               src="{{ trendingCoins[i].large }}"
               alt=""
             />
+            <a
+            class="has-text-weight-semibold"
+            id="crypto-link"
+            (click)="openCrypto(trendingCoins[i].id)"
+            >  {{ trendingCoins[i].name }}</a
+          >
             <p class="column p-1 has-text-weight-medium">
-              {{ trendingCoins[i].name }}
               <span class="ml-2 has-text-grey-light has-text-weight-light">{{
                 trendingCoins[i].symbol
               }}</span>
             </p>
-            <!-- <p>coins.</p> -->
           </div>
         </div>
       </div>
