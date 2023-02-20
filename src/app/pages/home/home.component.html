@@ -1,6 +1,6 @@
 <ng-container *ngIf="!isLoading">
   <div class="columns">
-    <div class="column is-5">
+    <div class="column is-4">
       <div id="trending" class="card has-text-white-bis">
         <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Trending</p>
 
@@ -32,8 +32,73 @@
         </div>
       </div>
     </div>
-  </div>
 
+  <div class="column is-4">
+    <div id="trending" class="card has-text-white-bis">
+      <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Gainers</p>
+
+      <div *ngIf="gainers" class="card-content pt-3">
+        <div
+          class="columns is-vcentered pl-5 mt-1 is-flex"
+          *ngFor="let gainer of gainers | slice : 0 : 5; let i = index"
+        >
+          <p class="pr-3 has-text-white-bis has-text-weight-medium">
+            {{ i + 1 }}
+          </p>
+          <img
+            class="image is-24x24 mr-2"
+            src="{{ gainers[i].image }}"
+            alt="crypto icon"
+          />
+          <a
+          class="has-text-weight-semibold"
+          id="crypto-link"
+          (click)="openCrypto(gainers[i].id)"
+          >  {{ gainers[i].name }}</a
+        >
+          <p class="column p-1 has-text-weight-medium">
+            <span class="ml-2 has-text-grey-light has-text-weight-light">{{
+              gainers[i].symbol
+            }}</span>
+            {{gainers[i].price_change_24h}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-4">
+    <div id="trending" class="card has-text-white-bis">
+      <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Losers</p>
+
+      <div *ngIf="trending" class="card-content pt-3">
+        <div
+          class="columns is-vcentered pl-5 mt-1 is-flex"
+          *ngFor="let coins of trendingCoins | slice : 0 : 5; let i = index"
+        >
+          <p class="pr-3 has-text-white-bis has-text-weight-medium">
+            {{ i + 1 }}
+          </p>
+          <img
+            class="image is-24x24 mr-2"
+            src="{{ trendingCoins[i].large }}"
+            alt="crypto icon"
+          />
+          <a
+          class="has-text-weight-semibold"
+          id="crypto-link"
+          (click)="openCrypto(trendingCoins[i].id)"
+          >  {{ trendingCoins[i].name }}</a
+        >
+          <p class="column p-1 has-text-weight-medium">
+            <span class="ml-2 has-text-grey-light has-text-weight-light">{{
+              trendingCoins[i].symbol
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <table class="table is-fullwidth">
     <thead>
       <tr>
