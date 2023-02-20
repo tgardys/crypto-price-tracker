@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RequestService } from 'src/app/services/request.service';
 import { Trending } from 'src/app/interfaces/trending';
 import { TrendingItem } from 'src/app/interfaces/trending-item';
+import { Gainers } from 'src/app/interfaces/market-data';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   trendingCoins: TrendingItem[] = [];
   candlestickData: any;
   cryptoData: any;
-
+  gainers: Gainers[] = [];
   isLoading = true;
 
   constructor(private cryptoService: RequestService, public router: Router) {}
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.candlestickChart();
     this.trendingCrypto();
     this.getCoinsData();
+
   }
 
   public openCrypto(id: string) {
@@ -44,7 +46,12 @@ export class HomeComponent implements OnInit {
   getCoinsData(): void {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {
+        
         this.cryptoData = data;
+        this.gainers = data;
+        const sortedGainer = this.gainers.sort((a, b) => (a.price_change_percentage_24h > b.price_change_percentage_24h ? -1 : 1));
+        console.log('sortedgainer',sortedGainer)
+
         console.log('crypto market data: ', this.cryptoData);
       },
       error: (error: any) =>
