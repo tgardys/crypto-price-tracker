@@ -21,9 +21,10 @@ export class HomeComponent implements OnInit {
   constructor(private cryptoService: RequestService, public router: Router) {}
 
   ngOnInit(): void {
-    this.candlestickChart();
+    // this.candlestickChart();
     this.trendingCrypto();
     this.getCoinsData();
+    this.sortGainers()
 
   }
 
@@ -46,18 +47,28 @@ export class HomeComponent implements OnInit {
   getCoinsData(): void {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {
-        
         this.cryptoData = data;
-        this.gainers = data;
-        const sortedGainer = this.gainers.sort((a, b) => (a.price_change_percentage_24h > b.price_change_percentage_24h ? -1 : 1));
-        console.log('sortedgainer',sortedGainer)
-
         console.log('crypto market data: ', this.cryptoData);
+
       },
       error: (error: any) =>
         console.log('error while fetching crypto market data: ', error),
       complete: () => (this.isLoading = false),
     });
+  }
+
+  sortGainers(): void{
+    this.cryptoService.getMarketData().subscribe({
+      next: (data)=>{
+        this.gainers = data;
+        console.log("gainers function:", this.gainers)
+        const sortedGainer = this.gainers.sort((a, b) => (a.price_change_percentage_24h > b.price_change_percentage_24h ? -1 : 1));
+        console.log('sorted gainer:', sortedGainer)
+      },
+      error: (error: any) =>
+      console.log('error while fetching crypto market data: ', error),
+    complete: () => (this.isLoading = false),
+    })
   }
 
   trendingCrypto(): void {
