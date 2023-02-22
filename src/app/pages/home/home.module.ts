@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { CryptoComponent } from './crypto/crypto.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -16,7 +18,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    FormsModule,
+    NgxPaginationModule,
+    CommonModule,
+    RouterModule.forChild(routes),
+  ],
   declarations: [HomeComponent, CryptoComponent],
 })
 export class HomeModule {}
