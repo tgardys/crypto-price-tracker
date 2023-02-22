@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RequestService } from 'src/app/services/request.service';
 import { Trending } from 'src/app/interfaces/trending';
 import { TrendingItem } from 'src/app/interfaces/trending-item';
+import { Gainers, Losers } from 'src/app/interfaces/market-data';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +15,18 @@ export class HomeComponent implements OnInit {
   trendingCoins: TrendingItem[] = [];
   candlestickData: any;
   cryptoData: any;
-
+  gainers: Gainers[] = [];
   isLoading = true;
+  losers: Losers[] = [];
 
   constructor(private cryptoService: RequestService, public router: Router) {}
 
   ngOnInit(): void {
-    this.candlestickChart();
+    // this.candlestickChart();
     this.trendingCrypto();
     this.getCoinsData();
+    this.sortGainers();
+    this.sortLosers();
   }
 
   public openCrypto(id: string) {
@@ -46,6 +50,37 @@ export class HomeComponent implements OnInit {
       next: (data) => {
         this.cryptoData = data;
         console.log('crypto market data: ', this.cryptoData);
+      },
+      error: (error: any) =>
+        console.log('error while fetching crypto market data: ', error),
+      complete: () => (this.isLoading = false),
+    });
+  }
+
+  sortGainers(): void {
+    this.cryptoService.getMarketData().subscribe({
+      next: (data) => {
+        this.gainers = data;
+        console.log('gainers function:', this.gainers);
+        const sortedGainer = this.gainers.sort((a, b) =>
+          a.price_change_percentage_24h > b.price_change_percentage_24h ? -1 : 1
+        );
+        console.log('sorted gainer:', sortedGainer);
+      },
+      error: (error: any) =>
+        console.log('error while fetching crypto market data: ', error),
+      complete: () => (this.isLoading = false),
+    });
+  }
+  sortLosers(): void {
+    this.cryptoService.getMarketData().subscribe({
+      next: (data) => {
+        this.losers = data;
+        console.log('gainers function:', this.losers);
+        const sortedGainer = this.losers.sort((a, b) =>
+          a.price_change_percentage_24h < b.price_change_percentage_24h ? -1 : 1
+        );
+        console.log('sorted gainer:', sortedGainer);
       },
       error: (error: any) =>
         console.log('error while fetching crypto market data: ', error),
