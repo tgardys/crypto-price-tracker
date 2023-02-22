@@ -33,7 +33,17 @@ export interface Roi {
   percentage: number;
 }
 
-export interface Gainers{
+export interface Gainers {
+  id: string;
+  symbol: string;
+  name: string;
+  image: string;
+  current_price: number;
+  price_change_24h: number;
+  price_change_percentage_24h: number;
+}
+
+export interface Losers {
   id: string;
   symbol: string;
   name: string;
