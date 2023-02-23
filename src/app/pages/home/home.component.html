@@ -250,8 +250,15 @@
     (pageChange)="currentPage = $event"
     class="paginator"
   >
-    <button [disabled]="p.isFirstPage()" (click)="p.previous()">
-      Previous
+    <button
+      id="prev-btn"
+      class="button is-normal is-rounded"
+      [disabled]="p.isFirstPage()"
+      (click)="p.previous()"
+    >
+      <span class="icon has-text-white-ter">
+        <i class="fa-solid fa-arrow-left"></i>
+      </span>
     </button>
 
     <div
@@ -269,8 +276,15 @@
       </div>
     </div>
 
-    <button class="test" [disabled]="p.isLastPage()" (click)="p.next()">
-      Next
+    <button
+      id="prev-btn"
+      class="button is-normal is-rounded"
+      [disabled]="p.isLastPage()"
+      (click)="p.next()"
+    >
+      <span class="icon has-text-white-ter">
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
     </button>
   </pagination-template>
 </ng-container>
