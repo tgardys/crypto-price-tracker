@@ -151,6 +151,19 @@
       </div>
     </div>
   </div>
+  <div class="columns">
+    <div class="column">
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions?.series"
+          [chart]="chartOptions?.chart"
+          [xaxis]="chartOptions?.xaxis"
+          [yaxis]="chartOptions?.yaxis"
+          [title]="chartOptions?.title"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
   <table class="table is-fullwidth">
     <thead>
       <tr>
