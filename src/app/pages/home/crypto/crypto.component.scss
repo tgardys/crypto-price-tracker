@@ -3,6 +3,7 @@
 }
 
 .limitTextHeight {
-  height: 50px;
+  height: 120px;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent);
 }
