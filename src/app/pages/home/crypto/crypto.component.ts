@@ -9,10 +9,9 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./crypto.component.scss'],
 })
 export class CryptoComponent implements OnInit {
-  
-  isReadMore = true
+  isReadMore = true;
   showText() {
-     this.isReadMore = !this.isReadMore
+    this.isReadMore = !this.isReadMore;
   }
   coinData: any;
 
