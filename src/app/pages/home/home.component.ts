@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.candlestickChart();
+    this.candlestickChart();
     this.trendingCrypto();
     this.getCoinsData();
     this.sortGainers();
@@ -122,11 +122,9 @@ export class HomeComponent implements OnInit {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {
         this.gainers = data;
-        console.log('gainers function:', this.gainers);
-        const sortedGainer = this.gainers.sort((a, b) =>
+        this.gainers.sort((a, b) =>
           a.price_change_percentage_24h > b.price_change_percentage_24h ? -1 : 1
         );
-        console.log('sorted gainer:', sortedGainer);
       },
       error: (error: any) =>
         console.log('error while fetching crypto market data: ', error),
@@ -137,11 +135,10 @@ export class HomeComponent implements OnInit {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {
         this.losers = data;
-        console.log('gainers function:', this.losers);
-        const sortedGainer = this.losers.sort((a, b) =>
+
+        this.losers.sort((a, b) =>
           a.price_change_percentage_24h < b.price_change_percentage_24h ? -1 : 1
         );
-        console.log('sorted gainer:', sortedGainer);
       },
       error: (error: any) =>
         console.log('error while fetching crypto market data: ', error),
@@ -153,9 +150,7 @@ export class HomeComponent implements OnInit {
     this.cryptoService.getTrending().subscribe({
       next: (response) => {
         this.trending = response;
-        console.log('trending: ', this.trending);
         this.trendingCoins = this.trending.map((coins) => coins.item);
-        console.log('trending coins list: ', this.trendingCoins);
       },
       error: (error: any) =>
         console.log('error while fetching trending data: ', error),
