@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TableComponent } from './components/table/table.component';
+// import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
