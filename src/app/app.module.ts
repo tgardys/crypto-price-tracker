@@ -8,12 +8,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TableComponent } from './components/table/table.component';
-// import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { Ng2OrderModule } from 'ng2-order-pipe';
 
 @NgModule({
   declarations: [
@@ -30,10 +28,9 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     HttpClientModule,
     NgApexchartsModule,
     Ng2SearchPipeModule,
-    // Ng2OrderModule,
     NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
