@@ -37,6 +37,9 @@ export class HomeComponent implements OnInit {
   gainers: Gainers[] = [];
   isLoading = true;
   losers: Losers[] = [];
+  collection: string[] = [];
+  itemsPerPage: number = 10;
+  currentPage: number = 1;
 
   constructor(private cryptoService: RequestService, public router: Router) {
     this.chartOptions = {
@@ -94,7 +97,6 @@ export class HomeComponent implements OnInit {
     //tu ustawiamy symbol, który pobieramy z template HTML
     this.router.navigate([`crypto/${id}`]);
   }
-
   candlestickChart(): void {
     this.cryptoService.getCandlesticksInfo().subscribe({
       next: (response) => {

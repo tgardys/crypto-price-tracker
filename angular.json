@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["lodash"],
             "outputPath": "dist/crypto-price-tracker",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -97,5 +98,7 @@
       }
     }
   },
-  "defaultProject": "crypto-price-tracker"
+  "cli": {
+    "analytics": false
+  }
 }

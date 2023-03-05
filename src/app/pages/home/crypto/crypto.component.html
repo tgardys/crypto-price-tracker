@@ -3,12 +3,10 @@
     <div class="card-content">
       <div class="columns">
         <div class="column">
-          <p>cryptocurrencies / {{coinData.symbol}}</p>
+          <p>cryptocurrencies / {{ coinData.symbol }}</p>
           <div class="is-flex p-4">
-           
             <div class="columns">
               <div class="column is-auto">
-              
                 <img
                   class="coin-logo mr-3 mt-1"
                   src="{{ coinData.image.small }}"
@@ -115,12 +113,16 @@
         <div class="card-content">
           <div class="columns">
             <div class="column auto">
-              <div [ngClass]="{'limitTextHeight': isReadMore}">
-              <p>{{ coinData.description.en }}</p>
-            </div>
-            <button type="button" (click)="showText()">
-              {{ isReadMore ? 'Read More': 'Read Less' }}
-            </button>
+              <div [ngClass]="{ limitTextHeight: isReadMore }">
+                <p>{{ coinData.description.en }}</p>
+              </div>
+              <button
+                type="button"
+                (click)="showText()"
+                class="button is-small is-rounded is-light mt-4"
+              >
+                {{ isReadMore ? "Read More" : "Read Less" }}
+              </button>
             </div>
           </div>
         </div>
