@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   trendingCoins: TrendingItem[] = [];
   candlestickData: any;
   cryptoData: any;
+  categoriesData: any;
   gainers: Gainers[] = [];
   isLoading = true;
   losers: Losers[] = [];
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
     this.getCoinsData();
     this.sortGainers();
     this.sortLosers();
+    this.getCategoriesData();
   }
 
   public openCrypto(id: string) {
@@ -47,6 +49,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getCategoriesData(): void {
+    this.cryptoService.getCategoriesData().subscribe({
+      next: (data) => {
+        this.categoriesData = data;
+        console.log('categories data: ', this.categoriesData);
+      },
+      error: (error: any) =>
+        console.log('error while fetching crypto categories data: ', error),
+      complete: () => (this.isLoading = false),
+    });
+  }
   getCoinsData(): void {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {

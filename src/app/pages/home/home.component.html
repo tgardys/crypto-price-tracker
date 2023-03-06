@@ -1,231 +1,265 @@
 <ng-container *ngIf="!isLoading">
-  <div class="columns">
-    <div class="column is-4">
-      <div id="trending" class="card has-text-white-bis">
-        <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Trending</p>
-
-        <div *ngIf="trending" class="card-content pt-3">
-          <div
-            class="columns is-vcentered pl-5 mt-1 is-flex"
-            *ngFor="let coins of trendingCoins | slice : 0 : 5; let i = index"
-          >
-            <p class="pr-3 has-text-white-bis has-text-weight-medium">
-              {{ i + 1 }}
-            </p>
-            <img
-              class="image is-24x24 mr-2"
-              src="{{ trendingCoins[i].large }}"
-              alt="crypto icon"
-            />
-            <a
-              class="has-text-weight-semibold"
-              id="crypto-link"
-              (click)="openCrypto(trendingCoins[i].id)"
-            >
-              {{ trendingCoins[i].name }}</a
-            >
-            <p class="column p-1 has-text-weight-medium">
-              <span class="ml-2 has-text-grey-light has-text-weight-light">{{
-                trendingCoins[i].symbol
-              }}</span>
-            </p>
-          </div>
-        </div>
-      </div>
+  <section class="section is-medium bg-image">
+    <div class="field searchbar">
+      <p class="control has-icons-left">
+        <input class="input inputbar" type="text" placeholder="Explore..." />
+      </p>
     </div>
-
-    <div class="column is-4">
-      <div id="trending" class="card has-text-white-bis">
-        <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Gainers</p>
-
-        <div *ngIf="gainers" class="card-content pt-3">
-          <div
-            class="columns is-vcentered pl-5 mt-1 is-flex"
-            *ngFor="let gainer of gainers | slice : 0 : 5; let i = index"
-          >
-            <p class="pr-3 has-text-white-bis has-text-weight-medium">
-              {{ i + 1 }}
-            </p>
-            <img
-              class="image is-24x24 mr-2"
-              src="{{ gainer.image }}"
-              alt="crypto icon"
-            />
-            <a
-              class="has-text-weight-semibold"
-              id="crypto-link"
-              (click)="openCrypto(gainer.id)"
-            >
-              {{ gainer.name }}</a
-            >
-            <p class="column p-1 has-text-weight-medium">
-              <span class="ml-2 has-text-grey-light has-text-weight-light">{{
-                gainer.symbol
-              }}</span>
-            </p>
-            <p
-              class="pl-0 ml-0"
-              [ngClass]="
-                gainer.price_change_percentage_24h > 0
-                  ? 'has-text-success'
-                  : 'has-text-danger'
-              "
-            >
-              <span class="icon-text">
-                <span class="icon">
-                  <i
-                    [ngClass]="
-                      gainer.price_change_percentage_24h > 0
-                        ? 'fa-solid fa-caret-up'
-                        : 'fa-solid fa-caret-down'
-                    "
-                  ></i>
-                </span>
-                <span
-                  >{{
-                    gainer.price_change_percentage_24h | number : "1.2-2"
-                  }}%</span
-                >
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="column is-4">
-      <div id="trending" class="card has-text-white-bis">
-        <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Losers</p>
-
-        <div *ngIf="losers" class="card-content pt-3">
-          <div
-            class="columns is-vcentered pl-5 mt-1 is-flex"
-            *ngFor="let loser of losers | slice : 0 : 5; let i = index"
-          >
-            <p class="pr-3 has-text-white-bis has-text-weight-medium">
-              {{ i + 1 }}
-            </p>
-            <img
-              class="image is-24x24 mr-2"
-              src="{{ loser.image }}"
-              alt="crypto icon"
-            />
-            <a
-              class="has-text-weight-semibold"
-              id="crypto-link"
-              (click)="openCrypto(loser.id)"
-            >
-              {{ loser.name }}</a
-            >
-            <p class="column p-1 has-text-weight-medium">
-              <span class="ml-2 has-text-grey-light has-text-weight-light">{{
-                loser.symbol
-              }}</span>
-            </p>
-            <p
-              class="pl-0 ml-0"
-              [ngClass]="
-                loser.price_change_percentage_24h > 0
-                  ? 'has-text-success'
-                  : 'has-text-danger'
-              "
-            >
-              <span class="icon-text">
-                <span class="icon">
-                  <i
-                    [ngClass]="
-                      loser.price_change_percentage_24h > 0
-                        ? 'fa-solid fa-caret-up'
-                        : 'fa-solid fa-caret-down'
-                    "
-                  ></i>
-                </span>
-                <span
-                  >{{
-                    loser.price_change_percentage_24h | number : "1.2-2"
-                  }}%</span
-                >
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+  </section>
+  <div class="tabs is-toggle is-fullwidth is-large">
+    <ul>
+      <li>
+        <a>
+          <span class="icon"> <i class="fas fa-house"></i></span>
+          <span>Explorer</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon"
+            ><i class="fas fa-star" aria-hidden="true"></i
+          ></span>
+          <span>Categories</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon"
+            ><i class="far fa-file-alt" aria-hidden="true"></i
+          ></span>
+          <span>Favorites</span>
+        </a>
+      </li>
+    </ul>
   </div>
-  <table class="table is-fullwidth">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Market cap</th>
-        <th><abbr title="% change in 1h">24h %</abbr></th>
-        <!-- <th><abbr title="% change in 24h">24h %</abbr></th>
-        <th><abbr title="% change in 7d">7d %</abbr></th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        height="64px"
-        *ngFor="
-          let crypto of cryptoData
-            | paginate
-              : { currentPage: currentPage, itemsPerPage: itemsPerPage };
-          let i = index
-        "
-      >
-        <td>
-          <p class="is-size-6 has-text-white-bis">
-            {{ itemsPerPage * (currentPage - 1) + i + 1 }}
-          </p>
-        </td>
-        <td>
-          <div class="is-flex is-align-items-center">
-            <img
-              id="coin-logo"
-              class="image is-32x32 mr-3"
-              src="{{ crypto.image }}"
-              loading="lazy"
-              alt="USDT logo"
-            />
-            <a
-              class="has-text-weight-semibold"
-              id="crypto-link"
-              (click)="openCrypto(crypto.id)"
-              >{{ crypto.name }}</a
+  <div class="container">
+    <div class="columns">
+      <div class="column is-4">
+        <div id="trending" class="card has-text-white-bis">
+          <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Trending</p>
+
+          <div *ngIf="trending" class="card-content pt-3">
+            <div
+              class="columns is-vcentered pl-5 mt-1 is-flex"
+              *ngFor="let coins of trendingCoins | slice : 0 : 5; let i = index"
             >
-            <span class="has-text-white-bis has-text-weight-medium pl-2">
-              {{ crypto.symbol | uppercase }}
-            </span>
+              <p class="pr-3 has-text-white-bis has-text-weight-medium">
+                {{ i + 1 }}
+              </p>
+              <img
+                class="image is-24x24 mr-2"
+                src="{{ trendingCoins[i].large }}"
+                alt="crypto icon"
+              />
+              <a
+                class="has-text-weight-semibold"
+                id="crypto-link"
+                (click)="openCrypto(trendingCoins[i].id)"
+              >
+                {{ trendingCoins[i].name }}</a
+              >
+              <p class="column p-1 has-text-weight-medium">
+                <span class="ml-2 has-text-grey-light has-text-weight-light">{{
+                  trendingCoins[i].symbol
+                }}</span>
+              </p>
+            </div>
           </div>
-        </td>
-        <td>{{ crypto.current_price | currency }}</td>
-        <td>{{ crypto.market_cap | currency }}</td>
-        <td
-          class="pl-0 ml-0"
-          [ngClass]="
-            cryptoData[i].price_change_percentage_24h > 0
-              ? 'has-text-success'
-              : 'has-text-danger'
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div id="trending" class="card has-text-white-bis">
+          <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Gainers</p>
+
+          <div *ngIf="gainers" class="card-content pt-3">
+            <div
+              class="columns is-vcentered pl-5 mt-1 is-flex"
+              *ngFor="let gainer of gainers | slice : 0 : 5; let i = index"
+            >
+              <p class="pr-3 has-text-white-bis has-text-weight-medium">
+                {{ i + 1 }}
+              </p>
+              <img
+                class="image is-24x24 mr-2"
+                src="{{ gainer.image }}"
+                alt="crypto icon"
+              />
+              <a
+                class="has-text-weight-semibold"
+                id="crypto-link"
+                (click)="openCrypto(gainer.id)"
+              >
+                {{ gainer.name }}</a
+              >
+              <p class="column p-1 has-text-weight-medium">
+                <span class="ml-2 has-text-grey-light has-text-weight-light">{{
+                  gainer.symbol
+                }}</span>
+              </p>
+              <p
+                class="pl-0 ml-0"
+                [ngClass]="
+                  gainer.price_change_percentage_24h > 0
+                    ? 'has-text-success'
+                    : 'has-text-danger'
+                "
+              >
+                <span class="icon-text">
+                  <span class="icon">
+                    <i
+                      [ngClass]="
+                        gainer.price_change_percentage_24h > 0
+                          ? 'fa-solid fa-caret-up'
+                          : 'fa-solid fa-caret-down'
+                      "
+                    ></i>
+                  </span>
+                  <span
+                    >{{
+                      gainer.price_change_percentage_24h | number : "1.2-2"
+                    }}%</span
+                  >
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div id="trending" class="card has-text-white-bis">
+          <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Losers</p>
+
+          <div *ngIf="losers" class="card-content pt-3">
+            <div
+              class="columns is-vcentered pl-5 mt-1 is-flex"
+              *ngFor="let loser of losers | slice : 0 : 5; let i = index"
+            >
+              <p class="pr-3 has-text-white-bis has-text-weight-medium">
+                {{ i + 1 }}
+              </p>
+              <img
+                class="image is-24x24 mr-2"
+                src="{{ loser.image }}"
+                alt="crypto icon"
+              />
+              <a
+                class="has-text-weight-semibold"
+                id="crypto-link"
+                (click)="openCrypto(loser.id)"
+              >
+                {{ loser.name }}</a
+              >
+              <p class="column p-1 has-text-weight-medium">
+                <span class="ml-2 has-text-grey-light has-text-weight-light">{{
+                  loser.symbol
+                }}</span>
+              </p>
+              <p
+                class="pl-0 ml-0"
+                [ngClass]="
+                  loser.price_change_percentage_24h > 0
+                    ? 'has-text-success'
+                    : 'has-text-danger'
+                "
+              >
+                <span class="icon-text">
+                  <span class="icon">
+                    <i
+                      [ngClass]="
+                        loser.price_change_percentage_24h > 0
+                          ? 'fa-solid fa-caret-up'
+                          : 'fa-solid fa-caret-down'
+                      "
+                    ></i>
+                  </span>
+                  <span
+                    >{{
+                      loser.price_change_percentage_24h | number : "1.2-2"
+                    }}%</span
+                  >
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Market cap</th>
+          <th><abbr title="% change in 1h">24h %</abbr></th>
+          <!-- <th><abbr title="% change in 24h">24h %</abbr></th>
+        <th><abbr title="% change in 7d">7d %</abbr></th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          height="64px"
+          *ngFor="
+            let crypto of cryptoData
+              | paginate
+                : { currentPage: currentPage, itemsPerPage: itemsPerPage };
+            let i = index
           "
         >
-          <span class="icon-text">
-            <span class="icon">
-              <i
-                [ngClass]="
-                  cryptoData[i].price_change_percentage_24h > 0
-                    ? 'fa-solid fa-caret-up'
-                    : 'fa-solid fa-caret-down'
-                "
-              ></i>
+          <td>
+            <p class="is-size-6 has-text-white-bis">
+              {{ itemsPerPage * (currentPage - 1) + i + 1 }}
+            </p>
+          </td>
+          <td>
+            <div class="is-flex is-align-items-center">
+              <img
+                id="coin-logo"
+                class="image is-32x32 mr-3"
+                src="{{ crypto.image }}"
+                loading="lazy"
+                alt="USDT logo"
+              />
+              <a
+                class="has-text-weight-semibold"
+                id="crypto-link"
+                (click)="openCrypto(crypto.id)"
+                >{{ crypto.name }}</a
+              >
+              <span class="has-text-white-bis has-text-weight-medium pl-2">
+                {{ crypto.symbol | uppercase }}
+              </span>
+            </div>
+          </td>
+          <td>{{ crypto.current_price | currency }}</td>
+          <td>{{ crypto.market_cap | currency }}</td>
+          <td
+            class="pl-0 ml-0"
+            [ngClass]="
+              cryptoData[i].price_change_percentage_24h > 0
+                ? 'has-text-success'
+                : 'has-text-danger'
+            "
+          >
+            <span class="icon-text">
+              <span class="icon">
+                <i
+                  [ngClass]="
+                    cryptoData[i].price_change_percentage_24h > 0
+                      ? 'fa-solid fa-caret-up'
+                      : 'fa-solid fa-caret-down'
+                  "
+                ></i>
+              </span>
+              <span
+                >{{
+                  crypto.price_change_percentage_24h | number : "1.2-2"
+                }}%</span
+              >
             </span>
-            <span
-              >{{
-                crypto.price_change_percentage_24h | number : "1.2-2"
-              }}%</span
-            >
-          </span>
-        </td>
-        <!-- <td>
+          </td>
+          <!-- <td>
           <span class="icon-text">
             <span class="icon">
               <i></i>
@@ -233,7 +267,7 @@
             <span>%</span>
           </span>
         </td> -->
-        <!-- <td>
+          <!-- <td>
           <span class="icon-text">
             <span class="icon">
               <i></i>
@@ -241,50 +275,51 @@
             <span>$</span>
           </span>
         </td> -->
-      </tr>
-    </tbody>
-  </table>
+        </tr>
+      </tbody>
+    </table>
 
-  <pagination-template
-    #p="paginationApi"
-    (pageChange)="currentPage = $event"
-    class="paginator"
-  >
-    <button
-      id="prev-btn"
-      class="button is-normal is-rounded"
-      [disabled]="p.isFirstPage()"
-      (click)="p.previous()"
+    <pagination-template
+      #p="paginationApi"
+      (pageChange)="currentPage = $event"
+      class="paginator"
     >
-      <span class="icon has-text-white-ter">
-        <i class="fa-solid fa-arrow-left"></i>
-      </span>
-    </button>
-
-    <div
-      *ngFor="let page of p.pages"
-      [class.current]="p.getCurrent() === page.value"
-    >
-      <a
-        (click)="p.setCurrent(page.value)"
-        *ngIf="p.getCurrent() !== page.value"
+      <button
+        id="prev-btn"
+        class="button is-normal is-rounded"
+        [disabled]="p.isFirstPage()"
+        (click)="p.previous()"
       >
-        <span>{{ page.label }}</span>
-      </a>
-      <div *ngIf="p.getCurrent() === page.value">
-        <span>{{ page.label }}</span>
-      </div>
-    </div>
+        <span class="icon has-text-white-ter">
+          <i class="fa-solid fa-arrow-left"></i>
+        </span>
+      </button>
 
-    <button
-      id="prev-btn"
-      class="button is-normal is-rounded"
-      [disabled]="p.isLastPage()"
-      (click)="p.next()"
-    >
-      <span class="icon has-text-white-ter">
-        <i class="fa-solid fa-arrow-right"></i>
-      </span>
-    </button>
-  </pagination-template>
+      <div
+        *ngFor="let page of p.pages"
+        [class.current]="p.getCurrent() === page.value"
+      >
+        <a
+          (click)="p.setCurrent(page.value)"
+          *ngIf="p.getCurrent() !== page.value"
+        >
+          <span>{{ page.label }}</span>
+        </a>
+        <div *ngIf="p.getCurrent() === page.value">
+          <span>{{ page.label }}</span>
+        </div>
+      </div>
+
+      <button
+        id="prev-btn"
+        class="button is-normal is-rounded"
+        [disabled]="p.isLastPage()"
+        (click)="p.next()"
+      >
+        <span class="icon has-text-white-ter">
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </button>
+    </pagination-template>
+  </div>
 </ng-container>
