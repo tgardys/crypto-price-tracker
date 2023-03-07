@@ -1,47 +1,29 @@
 <ng-container *ngIf="!isLoading">
-  <section class="section is-medium bg-image">
-    <div class="field searchbar">
+  <section id="top-section" class="section bg-image">
+    <div id="search-bar" class="field">
       <p class="control has-icons-left">
-        <input class="input inputbar" type="text" placeholder="Explore..." />
+        <input
+          id="input-bar"
+          class="input is-large"
+          type="text"
+          placeholder="Explore..."
+        />
+        <span class="ml-2 pr-3 icon is-small is-left">
+          <i class="fas fa-search"></i>
+        </span>
       </p>
     </div>
-  </section>
-  <div class="tabs is-toggle is-fullwidth is-large">
-    <ul>
-      <li>
-        <a>
-          <span class="icon"> <i class="fas fa-house"></i></span>
-          <span>Explorer</span>
-        </a>
-      </li>
-      <li>
-        <a>
-          <span class="icon"
-            ><i class="fas fa-star" aria-hidden="true"></i
-          ></span>
-          <span>Categories</span>
-        </a>
-      </li>
-      <li>
-        <a>
-          <span class="icon"
-            ><i class="far fa-file-alt" aria-hidden="true"></i
-          ></span>
-          <span>Favorites</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="container">
-    <div class="columns">
-      <div class="column is-4">
+    <div
+      class="columns mt-6 is-flex is-justify-content-center is-align-items-center"
+    >
+      <div class="column is-3">
         <div id="trending" class="card has-text-white-bis">
           <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Trending</p>
 
           <div *ngIf="trending" class="card-content pt-3">
             <div
               class="columns is-vcentered pl-5 mt-1 is-flex"
-              *ngFor="let coins of trendingCoins | slice : 0 : 5; let i = index"
+              *ngFor="let coins of trendingCoins | slice : 0 : 3; let i = index"
             >
               <p class="pr-3 has-text-white-bis has-text-weight-medium">
                 {{ i + 1 }}
@@ -68,14 +50,14 @@
         </div>
       </div>
 
-      <div class="column is-4">
-        <div id="trending" class="card has-text-white-bis">
+      <div class="column is-3">
+        <div id="gainers" class="card has-text-white-bis">
           <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Gainers</p>
 
           <div *ngIf="gainers" class="card-content pt-3">
             <div
               class="columns is-vcentered pl-5 mt-1 is-flex"
-              *ngFor="let gainer of gainers | slice : 0 : 5; let i = index"
+              *ngFor="let gainer of gainers | slice : 0 : 3; let i = index"
             >
               <p class="pr-3 has-text-white-bis has-text-weight-medium">
                 {{ i + 1 }}
@@ -126,14 +108,14 @@
           </div>
         </div>
       </div>
-      <div class="column is-4">
-        <div id="trending" class="card has-text-white-bis">
+      <div class="column is-3">
+        <div id="losers" class="card has-text-white-bis">
           <p class="is-size-4 pl-5 pt-4 has-text-weight-medium">Top Losers</p>
 
           <div *ngIf="losers" class="card-content pt-3">
             <div
               class="columns is-vcentered pl-5 mt-1 is-flex"
-              *ngFor="let loser of losers | slice : 0 : 5; let i = index"
+              *ngFor="let loser of losers | slice : 0 : 3; let i = index"
             >
               <p class="pr-3 has-text-white-bis has-text-weight-medium">
                 {{ i + 1 }}
@@ -185,6 +167,35 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <div class="tabs is-toggle is-fullwidth is-large">
+    <ul>
+      <li>
+        <a>
+          <span class="icon"> <i class="fas fa-house"></i></span>
+          <span>Explorer</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon"
+            ><i class="fas fa-star" aria-hidden="true"></i
+          ></span>
+          <span>Categories</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon"
+            ><i class="far fa-file-alt" aria-hidden="true"></i
+          ></span>
+          <span>Favorites</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
     <table class="table is-fullwidth">
       <thead>
         <tr>
@@ -193,8 +204,6 @@
           <th>Price</th>
           <th>Market cap</th>
           <th><abbr title="% change in 1h">24h %</abbr></th>
-          <!-- <th><abbr title="% change in 24h">24h %</abbr></th>
-        <th><abbr title="% change in 7d">7d %</abbr></th> -->
         </tr>
       </thead>
       <tbody>
@@ -259,22 +268,6 @@
               >
             </span>
           </td>
-          <!-- <td>
-          <span class="icon-text">
-            <span class="icon">
-              <i></i>
-            </span>
-            <span>%</span>
-          </span>
-        </td> -->
-          <!-- <td>
-          <span class="icon-text">
-            <span class="icon">
-              <i></i>
-            </span>
-            <span>$</span>
-          </span>
-        </td> -->
         </tr>
       </tbody>
     </table>

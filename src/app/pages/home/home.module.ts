@@ -6,6 +6,7 @@ import { CryptoComponent } from './crypto/crypto.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -26,4 +27,4 @@ const routes: Routes = [
   ],
   declarations: [HomeComponent, CryptoComponent],
 })
-export class HomeModule {}
+export class HomeModule { }
