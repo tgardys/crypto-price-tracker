@@ -5,7 +5,7 @@ import { HomeComponent } from './home.component';
 import { CryptoComponent } from './crypto/crypto.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
-
+import { TableModule } from 'src/app/components/table/table.module';
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    TableModule,
     FormsModule,
     NgxPaginationModule,
     CommonModule,
