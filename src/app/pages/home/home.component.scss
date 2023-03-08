@@ -4,18 +4,31 @@
   background-size: cover;
 }
 
-.tabs a {
-  font-size: 0.8em;
-  padding: 1.25em;
+#trending,
+#losers,
+#gainers {
+  max-width: 450px;
+  border-radius: 20px;
 }
 
-.tabs.is-toggle a {
-  border: none;
-}
 .tabs {
   background-color: #1f1f1f;
-  color: whitesmoke;
+  a {
+    border: none;
+    font-size: 0.8em;
+    padding: 1.25em;
+    &:hover {
+      background-color: #333333;
+    }
+  }
+  li a {
+    color: white;
+  }
+  li.is-active a {
+    background-color: #333333;
+  }
 }
+
 #crypto-link {
   color: inherit;
   &#crypto-link:hover {

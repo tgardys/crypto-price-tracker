@@ -1,132 +1,140 @@
-<ng-container *ngIf="!isLoading">
-  <div class="card has-text-white-bis">
-    <div class="card-content">
-      <div class="columns">
-        <div class="column">
-          <p>cryptocurrencies / {{ coinData.symbol }}</p>
-          <div class="is-flex p-4">
-            <div class="columns">
-              <div class="column is-auto">
-                <img
-                  class="coin-logo mr-3 mt-1"
-                  src="{{ coinData.image.small }}"
-                  loading="lazy"
-                  alt="USDT logo"
-                />
-              </div>
-            </div>
-            <div class="name-price-wrapper">
-              <h1 class="is-size-2">
-                {{ coinData.name }}
-                <span
-                  class="pb-0 has-text-grey-light has-text-weight-light is-size-3 ml-2"
-                  >{{ coinData.symbol | uppercase }}</span
-                >
-              </h1>
-
-              <p class="is-size-3">
-                {{ coinData.tickers[0].converted_last.usd | currency }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="crypto-data" class="columns is-vcentered">
-        <div class="column is-5">
-          <div class="box has-text-white-bis">
-            <progress
-              class="progress is-small mt-3"
-              value="70"
-              max="100"
-            ></progress>
-            <div
-              class="is-flex is-align-items-center is-justify-content-space-between"
-            >
-              <span> {{ coinData.market_data.low_24h.usd | currency }}</span>
-              <span>24H Range</span>
-              <span>{{ coinData.market_data.high_24h.usd | currency }}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="column is-auto">
-          <div class="box has-text-white-bis">
-            <div class="columns is-align-items-flex-end">
-              <div class="column is-one-third">
-                <div class="block">
-                  <p>Market Cap</p>
-                  {{ coinData.market_data.market_cap.usd | currency }}
-                </div>
-                <div class="block">
-                  <p>Price change 1h</p>
-                  {{
-                    coinData.market_data.price_change_percentage_1h_in_currency
-                      .usd | number : "1.2-2"
-                  }}%
+<div class="container">
+  <ng-container *ngIf="!isLoading">
+    <div class="card has-text-white-bis">
+      <div class="card-content">
+        <div class="columns">
+          <div class="column">
+            <p class="has-text-weight-medium">
+              <a id="breadcrumb" href="/"><span>cryptocurrencies</span></a> /
+              {{ coinData.symbol }}
+            </p>
+            <div class="is-flex p-4">
+              <div class="columns">
+                <div class="column is-auto">
+                  <img
+                    class="coin-logo mr-3 mt-1"
+                    src="{{ coinData.image.small }}"
+                    loading="lazy"
+                    alt="USDT logo"
+                  />
                 </div>
               </div>
-              <div class="column is-one-third">
-                <div class="block">
-                  <p>Total Supply</p>
-                  {{ coinData.market_data.total_supply | number : "1.0-0" }}
-                </div>
-                <div class="block">
-                  <p>Price change 24h</p>
-                  {{
-                    coinData.market_data.price_change_percentage_24h
-                      | number : "1.2-2"
-                  }}%
-                </div>
-              </div>
-              <div class="column is-one-third">
-                <div class="block">
-                  <p>Max Supply</p>
-
-                  <div
-                    *ngIf="
-                      coinData.market_data.max_supply !== null;
-                      else infinite
-                    "
+              <div class="name-price-wrapper">
+                <h1 class="is-size-2">
+                  {{ coinData.name }}
+                  <span
+                    class="pb-0 has-text-grey-light has-text-weight-light is-size-3 ml-2"
+                    >{{ coinData.symbol | uppercase }}</span
                   >
-                    {{ coinData.market_data.max_supply | number : "1.2-2" }}
+                </h1>
+
+                <p class="is-size-3">
+                  {{ coinData.tickers[0].converted_last.usd | currency }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="crypto-data" class="columns is-vcentered">
+          <div class="column is-5">
+            <div class="box has-text-white-bis">
+              <progress
+                class="progress is-small mt-3"
+                value="70"
+                max="100"
+              ></progress>
+              <div
+                class="is-flex is-align-items-center is-justify-content-space-between"
+              >
+                <span> {{ coinData.market_data.low_24h.usd | currency }}</span>
+                <span>24H Range</span>
+                <span>{{ coinData.market_data.high_24h.usd | currency }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-auto">
+            <div class="box has-text-white-bis">
+              <div class="columns is-align-items-flex-end">
+                <div class="column is-one-third">
+                  <div class="block">
+                    <p>Market Cap</p>
+                    {{ coinData.market_data.market_cap.usd | currency }}
+                  </div>
+                  <div class="block">
+                    <p>Price change 1h</p>
+                    {{
+                      coinData.market_data
+                        .price_change_percentage_1h_in_currency.usd
+                        | number : "1.2-2"
+                    }}%
+                  </div>
+                </div>
+                <div class="column is-one-third">
+                  <div class="block">
+                    <p>Total Supply</p>
+                    {{
+                      coinData.market_data.circulating_supply | number : "1.0-0"
+                    }}
+                  </div>
+                  <div class="block">
+                    <p>Price change 24h</p>
+                    {{
+                      coinData.market_data.price_change_percentage_24h
+                        | number : "1.2-2"
+                    }}%
+                  </div>
+                </div>
+                <div class="column is-one-third">
+                  <div class="block">
+                    <p>Max Supply</p>
+
+                    <div
+                      *ngIf="
+                        coinData.market_data.max_supply !== null;
+                        else infinite
+                      "
+                    >
+                      {{ coinData.market_data.max_supply | number : "1.2-2" }}
+                    </div>
+
+                    <ng-template #infinite>
+                      <p>infinite</p>
+                    </ng-template>
                   </div>
 
-                  <ng-template #infinite>
-                    <p>infinite</p>
-                  </ng-template>
-                </div>
-
-                <div class="block">
-                  <p>Price change 7d</p>
-                  {{
-                    coinData.market_data.price_change_percentage_7d
-                      | number : "1.2-2"
-                  }}%
+                  <div class="block">
+                    <p>Price change 7d</p>
+                    {{
+                      coinData.market_data.price_change_percentage_7d
+                        | number : "1.2-2"
+                    }}%
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="has-background-black-ter card has-text-white-bis mt-3">
-        <div class="card-content">
-          <div class="columns">
-            <div class="column auto">
-              <div [ngClass]="{ limitTextHeight: isReadMore }">
-                <p>{{ coinData.description.en }}</p>
+        <div class="has-background-black-ter card has-text-white-bis mt-3">
+          <div class="card-content">
+            <div class="columns">
+              <div class="column auto">
+                <div [ngClass]="{ 'limit-text-height': isReadMore }">
+                  <p>{{ coinData.description.en }}</p>
+                </div>
+                <button
+                  type="button"
+                  (click)="showText()"
+                  class="button is-small is-rounded is-light mt-4"
+                >
+                  {{ isReadMore ? "Read More" : "Read Less" }}
+                </button>
               </div>
-              <button
-                type="button"
-                (click)="showText()"
-                class="button is-small is-rounded is-light mt-4"
-              >
-                {{ isReadMore ? "Read More" : "Read Less" }}
-              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
+</div>

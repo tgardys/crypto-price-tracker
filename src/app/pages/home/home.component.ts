@@ -14,21 +14,19 @@ export class HomeComponent implements OnInit {
   trending: Trending[] = [];
   trendingCoins: TrendingItem[] = [];
   candlestickData: any;
-
   categoriesData: any;
   gainers: Gainers[] = [];
   isLoading = true;
   losers: Losers[] = [];
 
-  constructor(private cryptoService: RequestService, public router: Router) {}
+  constructor(private cryptoService: RequestService, public router: Router) { }
 
   ngOnInit(): void {
     // this.candlestickChart();
     this.trendingCrypto();
-
     this.sortGainers();
     this.sortLosers();
-    this.getCategoriesData();
+    // this.getCategoriesData();
   }
 
   public openCrypto(id: string) {
