@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { TableModule } from 'src/app/components/table/table.module';
 import { TabModule } from 'src/app/components/tab/tab.module';
 import { TabsModule } from 'src/app/components/tabs/tabs.module';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CategoriesModule } from 'src/app/components/categories/categories.module';
 
 const routes: Routes = [
@@ -25,6 +25,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CategoriesModule,
+    CarouselModule,
     TableModule,
     FormsModule,
     NgxPaginationModule,
@@ -35,4 +36,4 @@ const routes: Routes = [
   ],
   declarations: [HomeComponent, CryptoComponent],
 })
-export class HomeModule { }
+export class HomeModule {}

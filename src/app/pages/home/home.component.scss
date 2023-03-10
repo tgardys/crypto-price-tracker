@@ -46,3 +46,8 @@ input::placeholder {
 input {
   border: none;
 }
+.item {
+  display: block;
+  max-width: 24px !important;
+  height: auto;
+}

@@ -4,7 +4,7 @@ import { RequestService } from 'src/app/services/request.service';
 import { Trending } from 'src/app/interfaces/trending';
 import { TrendingItem } from 'src/app/interfaces/trending-item';
 import { Gainers, Losers } from 'src/app/interfaces/market-data';
-
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,6 +17,32 @@ export class HomeComponent implements OnInit {
   gainers: Gainers[] = [];
   isLoading = true;
   losers: Losers[] = [];
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    autoHeight: true,
+    autoWidth: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      500: {
+        items: 1,
+      },
+      740: {
+        items: 1,
+      },
+    },
+    nav: false,
+  };
 
   constructor(private cryptoService: RequestService, public router: Router) {}
 

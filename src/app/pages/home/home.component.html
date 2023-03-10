@@ -27,37 +27,41 @@
               </span>
             </p>
 
-            <div *ngIf="trending" class="card-content pt-3">
-              <div
-                class="columns is-vcentered pl-5 mt-1 is-flex"
-                *ngFor="
-                  let coins of trendingCoins | slice : 0 : 3;
-                  let i = index
-                "
-              >
-                <p class="pr-3 has-text-white-bis has-text-weight-medium">
-                  {{ i + 1 }}
-                </p>
-                <img
-                  class="image is-24x24 mr-2"
-                  src="{{ trendingCoins[i].large }}"
-                  alt="crypto icon"
-                />
-                <a
-                  class="has-text-weight-semibold"
-                  id="crypto-link"
-                  (click)="openCrypto(trendingCoins[i].id)"
-                >
-                  {{ trendingCoins[i].name }}</a
-                >
-                <p class="column p-1 has-text-weight-medium">
-                  <span
-                    class="ml-2 has-text-grey-light has-text-weight-light"
-                    >{{ trendingCoins[i].symbol }}</span
+            <owl-carousel-o [options]="customOptions">
+              <ng-template carouselSlide id="slide1"
+                ><div *ngIf="trending" class="card-content pt-3">
+                  <div
+                    class="columns is-vcentered pl-5 mt-1 is-flex"
+                    *ngFor="
+                      let coins of trendingCoins | slice : 0 : 6;
+                      let i = index
+                    "
                   >
-                </p>
-              </div>
-            </div>
+                    <p class="pr-3 has-text-white-bis has-text-weight-medium">
+                      {{ i + 1 }}
+                    </p>
+                    <img
+                      class="image is-24x24 mr-2 item"
+                      src="{{ trendingCoins[i].large }}"
+                      alt="crypto icon"
+                    />
+                    <a
+                      class="has-text-weight-semibold"
+                      id="crypto-link"
+                      (click)="openCrypto(trendingCoins[i].id)"
+                    >
+                      {{ trendingCoins[i].name }}</a
+                    >
+                    <p class="column p-1 has-text-weight-medium">
+                      <span
+                        class="ml-2 has-text-grey-light has-text-weight-light"
+                        >{{ trendingCoins[i].symbol }}</span
+                      >
+                    </p>
+                  </div>
+                </div></ng-template
+              >
+            </owl-carousel-o>
           </div>
         </div>
 
@@ -69,60 +73,65 @@
                 <i class="fa-solid fa-arrow-trend-up"></i>
               </span>
             </p>
-
-            <div *ngIf="gainers" class="card-content pt-3">
-              <div
-                class="columns is-vcentered pl-5 mt-1 is-flex"
-                *ngFor="let gainer of gainers | slice : 0 : 3; let i = index"
+            <owl-carousel-o [options]="customOptions">
+              <<ng-container
+                *ngFor="let gainer of gainers | slice : 0 : 6; let i = index"
               >
-                <p class="pr-3 has-text-white-bis has-text-weight-medium">
-                  {{ i + 1 }}
-                </p>
-                <img
-                  class="image is-24x24 mr-2"
-                  src="{{ gainer.image }}"
-                  alt="crypto icon"
-                />
-                <a
-                  class="has-text-weight-semibold"
-                  id="crypto-link"
-                  (click)="openCrypto(gainer.id)"
-                >
-                  {{ gainer.name }}</a
-                >
-                <p class="column p-1 has-text-weight-medium">
-                  <span
-                    class="ml-2 has-text-grey-light has-text-weight-light"
-                    >{{ gainer.symbol }}</span
-                  >
-                </p>
-                <p
-                  class="pl-0 ml-0"
-                  [ngClass]="
-                    gainer.price_change_percentage_24h > 0
-                      ? 'has-text-success'
-                      : 'has-text-danger'
-                  "
-                >
-                  <span class="icon-text">
-                    <span class="icon">
-                      <i
+                <ng-template carouselSlide [id]="gainer.id">
+                  <div *ngIf="gainers" class="card-content pt-3">
+                    <div class="columns is-vcentered pl-5 mt-1 is-flex">
+                      <p class="pr-3 has-text-white-bis has-text-weight-medium">
+                        {{ i + 1 }}
+                      </p>
+                      <img
+                        class="image is-24x24 mr-2 item"
+                        src="{{ gainer.image }}"
+                        alt="crypto icon"
+                      />
+                      <a
+                        class="has-text-weight-semibold"
+                        id="crypto-link"
+                        (click)="openCrypto(gainer.id)"
+                      >
+                        {{ gainer.name }}</a
+                      >
+                      <p class="column p-1 has-text-weight-medium">
+                        <span
+                          class="ml-2 has-text-grey-light has-text-weight-light"
+                          >{{ gainer.symbol }}</span
+                        >
+                      </p>
+                      <p
+                        class="pl-0 ml-0"
                         [ngClass]="
                           gainer.price_change_percentage_24h > 0
-                            ? 'fa-solid fa-caret-up'
-                            : 'fa-solid fa-caret-down'
+                            ? 'has-text-success'
+                            : 'has-text-danger'
                         "
-                      ></i>
-                    </span>
-                    <span
-                      >{{
-                        gainer.price_change_percentage_24h | number : "1.2-2"
-                      }}%</span
-                    >
-                  </span>
-                </p>
-              </div>
-            </div>
+                      >
+                        <span class="icon-text">
+                          <span class="icon">
+                            <i
+                              [ngClass]="
+                                gainer.price_change_percentage_24h > 0
+                                  ? 'fa-solid fa-caret-up'
+                                  : 'fa-solid fa-caret-down'
+                              "
+                            ></i>
+                          </span>
+                          <span
+                            >{{
+                              gainer.price_change_percentage_24h
+                                | number : "1.2-2"
+                            }}%</span
+                          >
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
           </div>
         </div>
         <div class="column is-4">
