@@ -1,84 +1,91 @@
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Top Gainers</th>
-      <th>Market cap</th>
-      <th>Volume 24h</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      height="64px"
-      *ngFor="
-        let category of categoriesData
-          | paginate : { currentPage: currentPage, itemsPerPage: itemsPerPage };
-        let i = index
-      "
+<div class="container">
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Top Gainers</th>
+        <th>Market cap</th>
+        <th>Volume 24h</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        height="64px"
+        *ngFor="
+          let category of categoriesData
+            | paginate
+              : { currentPage: currentPage, itemsPerPage: itemsPerPage };
+          let i = index
+        "
+      >
+        <td>
+          <p class="is-size-6 has-text-white-bis">
+            {{ itemsPerPage * (currentPage - 1) + i + 1 }}
+          </p>
+        </td>
+        <td>{{ category.name }}</td>
+        <td>
+          <div class="is-flex is-align-items-center">
+            <ng-container
+              *ngFor="let coinLogo of category.top_3_coins; let i = index"
+            >
+              <img
+                [id]="'coin-logo-' + i"
+                class="image is-32x32 mr-3"
+                [src]="coinLogo"
+                loading="lazy"
+                [alt]="'Logo of ' + coinLogo"
+              />
+            </ng-container>
+          </div>
+        </td>
+        <td>{{ category.market_cap | currency }}</td>
+        <td>{{ category.volume_24h | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-template
+    #p="paginationApi"
+    (pageChange)="currentPage = $event"
+    class="paginator"
+  >
+    <button
+      id="prev-btn"
+      class="button is-normal is-rounded"
+      [disabled]="p.isFirstPage()"
+      (click)="p.previous()"
     >
-      <td>
-        <p class="is-size-6 has-text-white-bis">
-          {{ itemsPerPage * (currentPage - 1) + i + 1 }}
-        </p>
-      </td>
-      <td>{{ category.name }}</td>
-      <td>
-        <div class="is-flex is-align-items-center">
-          <ng-container
-            *ngFor="let coinLogo of category.top_3_coins; let i = index"
-          >
-            <img
-              [id]="'coin-logo-' + i"
-              class="image is-32x32 mr-3"
-              [src]="coinLogo"
-              loading="lazy"
-              [alt]="'Logo of ' + coinLogo"
-            />
-          </ng-container>
-        </div>
-      </td>
-      <td>{{ category.market_cap | currency }}</td>
-      <td>{{ category.volume_24h | currency }}</td>
-    </tr>
-  </tbody>
-</table>
-<pagination-template
-  #p="paginationApi"
-  (pageChange)="currentPage = $event"
-  class="paginator"
->
-  <button
-    id="prev-btn"
-    class="button is-normal is-rounded"
-    [disabled]="p.isFirstPage()"
-    (click)="p.previous()"
-  >
-    <span class="icon has-text-white-ter">
-      <i class="fa-solid fa-arrow-left"></i>
-    </span>
-  </button>
+      <span class="icon has-text-white-ter">
+        <i class="fa-solid fa-arrow-left"></i>
+      </span>
+    </button>
 
-  <div
-    *ngFor="let page of p.pages"
-    [class.current]="p.getCurrent() === page.value"
-  >
-    <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
-      <span>{{ page.label }}</span>
-    </a>
-    <div *ngIf="p.getCurrent() === page.value">
-      <span>{{ page.label }}</span>
+    <div
+      *ngFor="let page of p.pages"
+      [class.current]="p.getCurrent() === page.value"
+    >
+      <a
+        (click)="p.setCurrent(page.value)"
+        *ngIf="p.getCurrent() !== page.value"
+      >
+        <span>{{ page.label }}</span>
+      </a>
+      <div *ngIf="p.getCurrent() === page.value">
+        <span>{{ page.label }}</span>
+      </div>
     </div>
-  </div>
 
-  <button
-    id="prev-btn"
-    class="button is-normal is-rounded"
-    [disabled]="p.isLastPage()"
-    (click)="p.next()"
-  >
-    <span class="icon has-text-white-ter">
-      <i class="fa-solid fa-arrow-right"></i>
-    </span>
-  </button>
-</pagination-template>
+    <button
+      id="prev-btn"
+      class="button is-normal is-rounded"
+      [disabled]="p.isLastPage()"
+      (click)="p.next()"
+    >
+      <span class="icon has-text-white-ter">
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </button>
+  </pagination-template>
+</div>
+di
