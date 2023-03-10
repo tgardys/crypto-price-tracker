@@ -6,6 +6,9 @@ import { CryptoComponent } from './crypto/crypto.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'src/app/components/table/table.module';
+import { TabModule } from 'src/app/components/tab/tab.module';
+import { TabsModule } from 'src/app/components/tabs/tabs.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -23,8 +26,10 @@ const routes: Routes = [
     FormsModule,
     NgxPaginationModule,
     CommonModule,
+    TabModule,
+    TabsModule,
     RouterModule.forChild(routes),
   ],
   declarations: [HomeComponent, CryptoComponent],
 })
-export class HomeModule {}
+export class HomeModule { }

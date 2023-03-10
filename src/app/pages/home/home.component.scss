@@ -11,24 +11,6 @@
   border-radius: 20px;
 }
 
-.tabs {
-  background-color: #1f1f1f;
-  a {
-    border: none;
-    font-size: 0.8em;
-    padding: 1.25em;
-    &:hover {
-      background-color: #333333;
-    }
-  }
-  li a {
-    color: white;
-  }
-  li.is-active a {
-    background-color: #333333;
-  }
-}
-
 #crypto-link {
   color: inherit;
   &#crypto-link:hover {

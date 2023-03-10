@@ -1,0 +1,16 @@
+<div class="tabs is-toggle is-fullwidth is-large">
+  <ul>
+    <li
+      *ngFor="let tab of tabs"
+      (click)="selectTab(tab)"
+      [ngClass]="{ 'is-active': tab.active }"
+    >
+      <a>
+        <span class="icon"> <i class="fas {{ tab.tabIcon }}"></i></span>
+        <span>{{ tab.tabTitle }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<ng-content></ng-content>

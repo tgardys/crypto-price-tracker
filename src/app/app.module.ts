@@ -28,4 +28,4 @@ import { NgxPaginationModule } from 'ngx-pagination';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
