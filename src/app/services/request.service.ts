@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { Trending } from '../interfaces/trending';
 import { MarketData } from '../interfaces/market-data';
 import { CoinData } from '../interfaces/coin-data';
+import { CategoriesData } from '../interfaces/categories-data';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,15 @@ export class RequestService {
     return this.http.get<any[]>(`${this.baseURL}/coins/bitcoin/ohlc`, {
       params: myParams,
     });
+  }
+  getCategoriesData(): Observable<CategoriesData> {
+    let myParams = new HttpParams().set('order', 'market_cap_desc');
+
+    return this.http
+      .get<CategoriesData>(`${this.baseURL}/coins/categories`, {
+        params: myParams,
+      })
+      .pipe(map((res) => res));
   }
 
   getMarketData(): Observable<MarketData[]> {

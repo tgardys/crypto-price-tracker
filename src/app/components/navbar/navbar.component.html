@@ -7,7 +7,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" routerLink="/">
         <p class="is-size-4 has-text-white-ter has-text-weight-semibold">
-          Crypto tracker
+          CryptoTracker
         </p>
       </a>
 
@@ -26,19 +26,23 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu" #navMenu>
-      <div class="navbar-start ml-6">
+    <div class="navbar-menu" #navMenu>
+      <div class="navbar-end">
         <a
-          class="navbar-item has-text-weight-semibold is-size-7 has-text-white-ter"
+          class="navbar-item has-text-weight-semibold has-text-white-ter"
           routerLink=""
         >
-          Home
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
         </a>
         <a
-          class="navbar-item has-text-weight-semibold is-size-7 has-text-white-ter"
+          class="navbar-item has-text-weight-semibold has-text-white-ter"
           routerLink="/crypto"
         >
-          Favorites
+          <span class="icon">
+            <i class="fas fa-star"></i>
+          </span>
         </a>
       </div>
     </div>

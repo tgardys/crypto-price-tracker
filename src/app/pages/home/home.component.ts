@@ -33,13 +33,9 @@ export class HomeComponent implements OnInit {
   trending: Trending[] = [];
   trendingCoins: TrendingItem[] = [];
   candlestickData: any;
-  cryptoData: any;
   gainers: Gainers[] = [];
   isLoading = true;
   losers: Losers[] = [];
-  collection: string[] = [];
-  itemsPerPage: number = 10;
-  currentPage: number = 1;
 
   constructor(private cryptoService: RequestService, public router: Router) {
     this.chartOptions = {
@@ -88,7 +84,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.candlestickChart();
     this.trendingCrypto();
-    this.getCoinsData();
     this.sortGainers();
     this.sortLosers();
   }
@@ -104,18 +99,6 @@ export class HomeComponent implements OnInit {
         console.log('candlestick chart data: ', this.candlestickData);
       },
       error: (error: any) => console.log('error: ', error),
-      complete: () => (this.isLoading = false),
-    });
-  }
-
-  getCoinsData(): void {
-    this.cryptoService.getMarketData().subscribe({
-      next: (data) => {
-        this.cryptoData = data;
-        console.log('crypto market data: ', this.cryptoData);
-      },
-      error: (error: any) =>
-        console.log('error while fetching crypto market data: ', error),
       complete: () => (this.isLoading = false),
     });
   }

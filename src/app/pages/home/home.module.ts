@@ -6,6 +6,11 @@ import { CryptoComponent } from './crypto/crypto.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TableModule } from 'src/app/components/table/table.module';
+import { TabModule } from 'src/app/components/tab/tab.module';
+import { TabsModule } from 'src/app/components/tabs/tabs.module';
+
+import { CategoriesModule } from 'src/app/components/categories/categories.module';
 
 const routes: Routes = [
   {
@@ -20,7 +25,13 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    CategoriesModule,
+    TableModule,
+    FormsModule,
+    NgxPaginationModule,
     CommonModule,
+    TabModule,
+    TabsModule,
     RouterModule.forChild(routes),
     NgApexchartsModule, FormsModule,
     NgxPaginationModule,],

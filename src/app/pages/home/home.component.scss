@@ -1,9 +1,14 @@
-table,
-thead th,
-td {
-  vertical-align: middle;
-  background-color: #1f1f1f;
-  color: whitesmoke;
+.bg-image {
+  background: url("../../../assets/images/bg.png") center center;
+  margin-top: -100px;
+  background-size: cover;
+}
+
+#trending,
+#losers,
+#gainers {
+  max-width: 450px;
+  border-radius: 20px;
 }
 
 #crypto-link {
@@ -12,47 +17,32 @@ td {
     color: #d1d1d1;
   }
 }
-
-.card {
-  border-radius: 15px;
-}
-
-.paginator {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 50%;
-  margin-left: auto;
+#search-bar {
   margin-right: auto;
-  font-size: 18px;
+  margin-left: auto;
+  width: 25%;
+  margin-top: 150px;
 }
 
-.paginator a {
-  padding: 12px 19px 12px 19px;
+input,
+input::placeholder {
+  font: 18px sans-serif;
+}
+
+#input-bar {
+  border-radius: 40px;
+  background-color: #1f1f1f;
   color: white;
 }
-
-.paginator a:hover {
-  background-color: #384265;
-  border-radius: 14px;
+.input:focus {
+  outline: none !important;
+  border: 2px solid #fafafa;
+}
+::placeholder {
+  color: white;
+  opacity: 0.5;
 }
 
-.current {
-  background-color: #21242e;
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#prev-btn {
-  border: 0;
-  background-color: #1f1f1f;
-}
-
-#next-btn {
-  border: 0;
-  background-color: #1f1f1f;
+input {
+  border: none;
 }

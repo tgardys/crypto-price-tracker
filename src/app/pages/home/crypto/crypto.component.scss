@@ -1,8 +1,12 @@
 .card {
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
-.limitTextHeight {
+#breadcrumb {
+  color: inherit;
+}
+
+.limit-text-height {
   height: 120px;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent);
