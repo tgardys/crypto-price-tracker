@@ -6,6 +6,7 @@ import { CryptoComponent } from './crypto/crypto.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'src/app/components/table/table.module';
+import { CategoriesModule } from 'src/app/categories/categories.module';
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +20,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    CategoriesModule,
     TableModule,
     FormsModule,
     NgxPaginationModule,
