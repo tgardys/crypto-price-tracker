@@ -7,6 +7,7 @@
         <th>Price</th>
         <th>Market cap</th>
         <th><abbr title="% change in 1h">24h %</abbr></th>
+        <th>7D chart</th>
       </tr>
     </thead>
     <tbody>
@@ -70,6 +71,16 @@
               }}%</span
             >
           </span>
+        </td>
+        <td id="chart">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [yaxis]="chartOptions.yaxis"
+            [stroke]="chartOptions.stroke"
+            [grid]="chartOptions.grid"
+          ></apx-chart>
         </td>
       </tr>
     </tbody>
