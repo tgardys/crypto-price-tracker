@@ -15,7 +15,11 @@
         *ngFor="
           let category of categoriesData
             | paginate
-              : { currentPage: currentPage, itemsPerPage: itemsPerPage };
+              : {
+                  id: 'pagination-categories',
+                  currentPage: currentPage,
+                  itemsPerPage: itemsPerPage
+                };
           let i = index
         "
       >
@@ -47,6 +51,7 @@
   </table>
   <pagination-template
     #p="paginationApi"
+    id="pagination-categories"
     (pageChange)="currentPage = $event"
     class="paginator"
   >
