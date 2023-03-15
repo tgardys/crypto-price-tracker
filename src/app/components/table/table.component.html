@@ -3,10 +3,10 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Market cap</th>
-        <th><abbr title="% change in 1h">24h %</abbr></th>
+        <th (click)="sortName()">Name</th>
+        <th (click)="sortPrice()">Price</th>
+        <th (click)="sortMarketCap()">Market cap</th>
+        <th (click)="sort24hChange()">24h</th>
       </tr>
     </thead>
     <tbody>
