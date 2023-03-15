@@ -30,6 +30,7 @@ export class TableComponent implements OnInit {
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions> | any;
   chartsData: any;
+  chartTime: any;
 
   isLoading = true;
   cryptoData: any;
@@ -41,7 +42,8 @@ export class TableComponent implements OnInit {
       series: [
         {
           name: "Bitcoin",
-          data: [[1324508400000, 34], [1324594800000, 54], [1326236400000, 43]]
+          // data: [[1678233600000, 24], [1678248000000, 34], [1678262400000, 43], [1678276800000, 50], [1678291200000, 60]]
+          data: [1, 2, 2, 3, 3]
         }
       ],
       chart: {
@@ -57,7 +59,7 @@ export class TableComponent implements OnInit {
 
       },
       stroke: {
-        curve: "stepline"
+        curve: "smooth",
       },
       xaxis: {
         labels: { show: false },
@@ -103,15 +105,19 @@ export class TableComponent implements OnInit {
     //tu ustawiamy symbol, który pobieramy z template HTML
     this.router.navigate([`crypto/${id}`]);
   }
+
   getCoinsData(): void {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {
         this.cryptoData = data;
         console.log('crypto market data: ', this.cryptoData);
+        this.chartTime = this.chartsData.map((time: any) => time[0])
+        console.warn(this.chartTime)
       },
       error: (error: any) =>
         console.log('error while fetching crypto market data: ', error),
       complete: () => (this.isLoading = false),
     });
   }
+
 }
