@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   gainers: Gainers[] = [];
   isLoading = true;
   losers: Losers[] = [];
+  filterTerm!: string;
 
   customOptions: OwlOptions = {
     loop: true,

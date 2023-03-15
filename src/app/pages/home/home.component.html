@@ -7,11 +7,37 @@
           class="input is-large"
           type="text"
           placeholder="Explore..."
+          [(ngModel)]="filterTerm"
         />
         <span class="ml-2 pr-3 icon is-small is-left">
           <i class="fas fa-search"></i>
         </span>
       </p>
+      <div *ngIf="filterTerm" class="is-flex is-flex-direction-column">
+        <div class="filter">
+          <ng-container
+            *ngFor="let gainer of gainers | filter : filterTerm; let i = index"
+          >
+            <div class="is-flex pl-3 mt-1 columns is-vcentered result">
+              <p class="pr-3 has-text-white-bis has-text-weight-medium">
+                {{ i + 1 }}
+              </p>
+              <img
+                class="image is-24x24 mr-2 item"
+                src="{{ gainer.image }}"
+                alt="crypto icon"
+              />
+              <a
+                class="has-text-weight-semibold"
+                id="crypto-link"
+                (click)="openCrypto(gainer.id)"
+              >
+                {{ gainer.name }} ({{ gainer.symbol | uppercase }})</a
+              >
+            </div>
+          </ng-container>
+        </div>
+      </div>
     </div>
 
     <div class="container cards-wrapper">

@@ -10,7 +10,7 @@ import { TabModule } from 'src/app/components/tab/tab.module';
 import { TabsModule } from 'src/app/components/tabs/tabs.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CategoriesModule } from 'src/app/components/categories/categories.module';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +24,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    Ng2SearchPipeModule,
     CategoriesModule,
     CarouselModule,
     TableModule,
