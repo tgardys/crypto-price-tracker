@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   gainers: Gainers[] = [];
   isLoading = true;
   losers: Losers[] = [];
+  filterTerm!: string;
 
   constructor(private cryptoService: RequestService, public router: Router) {}
 

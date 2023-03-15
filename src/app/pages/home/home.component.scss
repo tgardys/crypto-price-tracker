@@ -22,11 +22,18 @@
   margin-left: auto;
   width: 25%;
   margin-top: 150px;
+  transition: 2s transform;
 }
-
 input,
 input::placeholder {
   font: 18px sans-serif;
+}
+.filter {
+  overflow-y: scroll;
+  max-height: 30vh;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 20px;
 }
 
 #input-bar {
