@@ -14,11 +14,13 @@
         </span>
       </p>
       <div *ngIf="filterTerm" class="is-flex is-flex-direction-column">
-        <div class="filter">
+        <div class="filter" id="scroll-bar">
           <ng-container
             *ngFor="let gainer of gainers | filter : filterTerm; let i = index"
           >
-            <div class="is-flex pl-3 mt-1 columns is-vcentered result">
+            <div
+              class="is-flex my-4 mx-4 pl-3 mt-1 columns is-vcentered result"
+            >
               <p class="pr-3 has-text-white-bis has-text-weight-medium">
                 {{ i + 1 }}
               </p>
