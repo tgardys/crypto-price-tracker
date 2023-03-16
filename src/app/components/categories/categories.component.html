@@ -4,19 +4,19 @@
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Price</th>
+        <th>Top Gainers</th>
         <th>Market cap</th>
-        <th><abbr title="% change in 1h">24h %</abbr></th>
+        <th>Volume 24h</th>
       </tr>
     </thead>
     <tbody>
       <tr
         height="64px"
         *ngFor="
-          let crypto of cryptoData
+          let category of categoriesData
             | paginate
               : {
-                  id: 'pagination-table',
+                  id: 'pagination-categories',
                   currentPage: currentPage,
                   itemsPerPage: itemsPerPage
                 };
@@ -28,61 +28,32 @@
             {{ itemsPerPage * (currentPage - 1) + i + 1 }}
           </p>
         </td>
+        <td>{{ category.name }}</td>
         <td>
           <div class="is-flex is-align-items-center">
-            <img
-              id="coin-logo"
-              class="image is-32x32 mr-3"
-              src="{{ crypto.image }}"
-              loading="lazy"
-              alt="USDT logo"
-            />
-            <a
-              class="has-text-weight-semibold"
-              id="crypto-link"
-              (click)="openCrypto(crypto.id)"
-              >{{ crypto.name }}</a
+            <ng-container
+              *ngFor="let coinLogo of category.top_3_coins; let i = index"
             >
-            <span class="has-text-white-bis has-text-weight-medium pl-2">
-              {{ crypto.symbol | uppercase }}
-            </span>
+              <img
+                [id]="'coin-logo-' + i"
+                class="image is-32x32 mr-3"
+                [src]="coinLogo"
+                loading="lazy"
+                [alt]="'Logo of ' + coinLogo"
+              />
+            </ng-container>
           </div>
         </td>
-        <td>{{ crypto.current_price | currency }}</td>
-        <td>{{ crypto.market_cap | currency }}</td>
-        <td
-          class="pl-0 ml-0"
-          [ngClass]="
-            cryptoData[i].price_change_percentage_24h > 0
-              ? 'has-text-success'
-              : 'has-text-danger'
-          "
-        >
-          <span class="icon-text">
-            <span class="icon">
-              <i
-                [ngClass]="
-                  cryptoData[i].price_change_percentage_24h > 0
-                    ? 'fa-solid fa-caret-up'
-                    : 'fa-solid fa-caret-down'
-                "
-              ></i>
-            </span>
-            <span
-              >{{
-                crypto.price_change_percentage_24h | number : "1.2-2"
-              }}%</span
-            >
-          </span>
-        </td>
+        <td>{{ category.market_cap | currency }}</td>
+        <td>{{ category.volume_24h | currency }}</td>
       </tr>
     </tbody>
   </table>
   <pagination-template
     #p="paginationApi"
+    id="pagination-categories"
     (pageChange)="currentPage = $event"
     class="paginator"
-    id="pagination-table"
   >
     <button
       id="prev-btn"
@@ -122,3 +93,4 @@
     </button>
   </pagination-template>
 </div>
+di

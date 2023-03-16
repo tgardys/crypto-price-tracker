@@ -65,7 +65,7 @@
                   {{ i + 1 }}
                 </p>
                 <img
-                  class="image is-24x24 mr-2"
+                  class="image is-24x24 mr-2 item"
                   src="{{ trendingCoins[i].large }}"
                   alt="crypto icon"
                 />
@@ -96,59 +96,60 @@
               </span>
             </p>
 
-            <div *ngIf="gainers" class="card-content pt-3">
-              <div
-                class="columns is-vcentered pl-5 mt-1 is-flex"
-                *ngFor="let gainer of gainers | slice : 0 : 3; let i = index"
-              >
-                <p class="pr-3 has-text-white-bis has-text-weight-medium">
-                  {{ i + 1 }}
-                </p>
-                <img
-                  class="image is-24x24 mr-2"
-                  src="{{ gainer.image }}"
-                  alt="crypto icon"
-                />
-                <a
-                  class="has-text-weight-semibold"
-                  id="crypto-link"
-                  (click)="openCrypto(gainer.id)"
-                >
-                  {{ gainer.name }}</a
-                >
-                <p class="column p-1 has-text-weight-medium">
-                  <span
-                    class="ml-2 has-text-grey-light has-text-weight-light"
-                    >{{ gainer.symbol }}</span
+            <ng-container
+              *ngFor="let gainer of gainers | slice : 0 : 3; let i = index"
+            >
+              <div *ngIf="gainers" class="card-content pt-3">
+                <div class="columns is-vcentered pl-5 mt-1 is-flex">
+                  <p class="pr-3 has-text-white-bis has-text-weight-medium">
+                    {{ i + 1 }}
+                  </p>
+                  <img
+                    class="image is-24x24 mr-2 item"
+                    src="{{ gainer.image }}"
+                    alt="crypto icon"
+                  />
+                  <a
+                    class="has-text-weight-semibold"
+                    id="crypto-link"
+                    (click)="openCrypto(gainer.id)"
                   >
-                </p>
-                <p
-                  class="pl-0 ml-0"
-                  [ngClass]="
-                    gainer.price_change_percentage_24h > 0
-                      ? 'has-text-success'
-                      : 'has-text-danger'
-                  "
-                >
-                  <span class="icon-text">
-                    <span class="icon">
-                      <i
-                        [ngClass]="
-                          gainer.price_change_percentage_24h > 0
-                            ? 'fa-solid fa-caret-up'
-                            : 'fa-solid fa-caret-down'
-                        "
-                      ></i>
-                    </span>
+                    {{ gainer.name }}</a
+                  >
+                  <p class="column p-1 has-text-weight-medium">
                     <span
-                      >{{
-                        gainer.price_change_percentage_24h | number : "1.2-2"
-                      }}%</span
+                      class="ml-2 has-text-grey-light has-text-weight-light"
+                      >{{ gainer.symbol }}</span
                     >
-                  </span>
-                </p>
+                  </p>
+                  <p
+                    class="pl-0 ml-0"
+                    [ngClass]="
+                      gainer.price_change_percentage_24h > 0
+                        ? 'has-text-success'
+                        : 'has-text-danger'
+                    "
+                  >
+                    <span class="icon-text">
+                      <span class="icon">
+                        <i
+                          [ngClass]="
+                            gainer.price_change_percentage_24h > 0
+                              ? 'fa-solid fa-caret-up'
+                              : 'fa-solid fa-caret-down'
+                          "
+                        ></i>
+                      </span>
+                      <span
+                        >{{
+                          gainer.price_change_percentage_24h | number : "1.2-2"
+                        }}%</span
+                      >
+                    </span>
+                  </p>
+                </div>
               </div>
-            </div>
+            </ng-container>
           </div>
         </div>
         <div class="column is-4">
