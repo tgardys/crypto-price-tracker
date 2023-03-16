@@ -15,7 +15,11 @@
         *ngFor="
           let crypto of cryptoData
             | paginate
-              : { currentPage: currentPage, itemsPerPage: itemsPerPage };
+              : {
+                  id: 'pagination-table',
+                  currentPage: currentPage,
+                  itemsPerPage: itemsPerPage
+                };
           let i = index
         "
       >
@@ -78,6 +82,7 @@
     #p="paginationApi"
     (pageChange)="currentPage = $event"
     class="paginator"
+    id="pagination-table"
   >
     <button
       id="prev-btn"
@@ -117,4 +122,3 @@
     </button>
   </pagination-template>
 </div>
-di
