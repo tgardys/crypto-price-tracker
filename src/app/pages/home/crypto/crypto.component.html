@@ -39,11 +39,12 @@
         <div id="crypto-data" class="columns is-vcentered">
           <div class="column is-5">
             <div class="box has-text-white-bis">
-              <progress
-                class="progress is-small mt-3"
-                value="70"
-                max="100"
-              ></progress>
+              <meter
+                class="price-range"
+                [min]="coinData.market_data.low_24h.usd"
+                [value]="coinData.tickers[0].converted_last.usd"
+                [max]="coinData.market_data.high_24h.usd"
+              ></meter>
               <div
                 class="is-flex is-align-items-center is-justify-content-space-between"
               >
