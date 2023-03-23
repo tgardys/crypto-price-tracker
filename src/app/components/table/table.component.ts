@@ -1,3 +1,4 @@
+import { FavouritesService } from './../../services/favourites.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RequestService } from 'src/app/services/request.service';
@@ -7,12 +8,14 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  isLoading = true;
+  isLoading: boolean = true;
+  isFavorite: boolean = true;
+  favouriteSymbol: string = ''
   cryptoData: any;
   itemsPerPage: number = 25;
   currentPage: number = 1;
   orderDSC: boolean = true;
-  constructor(private cryptoService: RequestService, public router: Router) {}
+  constructor(private cryptoService: RequestService, private favouriteService: FavouritesService, public router: Router) { }
 
   ngOnInit(): void {
     this.getCoinsData();
@@ -22,6 +25,11 @@ export class TableComponent implements OnInit {
     //tu ustawiamy symbol, który pobieramy z template HTML
     this.router.navigate([`crypto/${id}`]);
   }
+
+  addToFavourite() {
+    this.favouriteService.addToFavourites(this.favouriteSymbol)
+  }
+
   getCoinsData(): void {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {

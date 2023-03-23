@@ -7,6 +7,7 @@
         <th (click)="sortPrice()">Price</th>
         <th (click)="sortMarketCap()">Market cap</th>
         <th (click)="sort24hChange()">24h</th>
+        <th>Favs</th>
       </tr>
     </thead>
     <tbody>
@@ -73,6 +74,15 @@
                 crypto.price_change_percentage_24h | number : "1.2-2"
               }}%</span
             >
+          </span>
+        </td>
+        <td>
+          <span (click)="addToFavourite()" class="icon">
+            <i
+              [ngClass]="
+                isFavorite === true ? 'fa-solid fa-star' : 'fa-regular fa-star'
+              "
+            ></i>
           </span>
         </td>
       </tr>
