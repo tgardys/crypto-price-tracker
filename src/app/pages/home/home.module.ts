@@ -1,3 +1,4 @@
+import { FavouritesModule } from './../../components/favourites/favourites.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,7 +10,8 @@ import { TableModule } from 'src/app/components/table/table.module';
 import { TabModule } from 'src/app/components/tab/tab.module';
 import { TabsModule } from 'src/app/components/tabs/tabs.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { CategoriesModule } from 'src/app/categories/categories.module';
+import { CategoriesModule } from 'src/app/components/categories/categories.module';
+
 const routes: Routes = [
   {
     path: '',
