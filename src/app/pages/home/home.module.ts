@@ -9,7 +9,7 @@ import { TableModule } from 'src/app/components/table/table.module';
 import { TabModule } from 'src/app/components/tab/tab.module';
 import { TabsModule } from 'src/app/components/tabs/tabs.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { CategoriesModule } from 'src/app/categories/categories.module';
+import { CategoriesModule } from 'src/app/components/categories/categories.module';
 const routes: Routes = [
   {
     path: '',
@@ -35,4 +35,4 @@ const routes: Routes = [
   ],
   declarations: [HomeComponent, CryptoComponent],
 })
-export class HomeModule { }
+export class HomeModule {}
