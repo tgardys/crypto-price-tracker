@@ -4,7 +4,7 @@ import { RequestService } from 'src/app/services/request.service';
 import { Trending } from 'src/app/interfaces/trending';
 import { TrendingItem } from 'src/app/interfaces/trending-item';
 import { Gainers, Losers } from 'src/app/interfaces/market-data';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
       complete: () => (this.isLoading = false),
     });
   }
+
   sortLosers(): void {
     this.cryptoService.getMarketData().subscribe({
       next: (data) => {
