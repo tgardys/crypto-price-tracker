@@ -16,7 +16,7 @@ export class RequestService {
   /// 1. tu inicjalizacja zmieną do której pobierzemy sobie potem 'id z komponentu crypto.component.ts
   id: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCandlesticksInfo(): Observable<any[]> {
     let myParams = new HttpParams().set('vs_currency', 'usd').set('days', '14');
@@ -65,6 +65,6 @@ export class RequestService {
   getTrending(): Observable<Trending[]> {
     return this.http
       .get<Trending[]>(`${this.baseURL}/search/trending`)
-      .pipe(map((res) => res['coins']));
+      .pipe(map((res: any) => res['coins']));
   }
 }
